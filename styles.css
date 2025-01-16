@@ -22,7 +22,7 @@ header {
     background-color: #fff;
     color: #BAD8B6;
     padding: 20px; /* تقليل المسافة داخل الهيدر */
-    width: 400px;
+    width: 700px;
     z-index: 1;
 }
 
@@ -31,7 +31,7 @@ header .logo {
 }
 
 header .logo img {
-    height: 90px; /* حجم الشعار */
+    height: 100px; /* حجم الشعار */
     width: auto; /* الحفاظ على النسبة بين الطول والعرض */
     display: block;
     margin-left: 50px; /* مسافة من الحافة اليسرى */
@@ -81,7 +81,7 @@ main {
 }
 
 .text-section button {
-    background-color: #40808e;
+    background-color: #52837e;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -94,11 +94,11 @@ main {
 }
 
 .text-section button:hover {
-    background-color: #40808e;
+    background-color: #234441;
 }
 
 .text-section p a {
-    color: #2c775d;
+    color:#3f7e68;
     text-decoration: none;
     font-weight: bold;
 }
@@ -161,4 +161,63 @@ pre{
 .box h1 {
     font-size: 50px;
     margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #528d832d;
+    padding: 0; /* إزالة الحشو */
+    position: relative;
+    flex-wrap: wrap;
+    color: #0b3436;
+    height: 200px; /* تقليل الارتفاع */
+}
+
+.footer-left-1, .footer-center-1, .footer-right-1 {
+    flex: 1;
+    padding: 0.5em; /* تقليل الحشو الداخلي */
+    text-align: center;
+}
+
+.footer-center-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo-1 {
+    width: 100px; /* تقليل حجم الشعار */
+}
+
+.contact-info-1 {
+    display: flex;
+    gap: 10px; /* تقليل الفجوة بين العناصر */
+    align-items: center;
+}
+
+.footer-left-1 img, .footer-right-1 img, .social-icon-1 {
+    max-width: 1.5em; /* تقليل الحجم */
+    height: auto;
+    margin-right: 0.5em; /* تقليل المسافة اليمنى */
+}
+
+.single-line-1 {
+    white-space: nowrap;
+}
+
+.footer-bottom-1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5em; /* تقليل المسافة العلوية */
+}
+
+.footer-bottom-1 p {
+    padding: 0.5em; /* تقليل الحشو */
+    background-color: #ffffff;
+    font-size: 0.75em; /* تقليل حجم الخط */
+    color: #153d45;
+    border-top: 0.0625em solid #ccc; /* 1px */
 }
