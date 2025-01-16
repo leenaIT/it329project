@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* General Reset */
 * {
     margin: 0;
@@ -163,3 +164,170 @@ pre{
     margin-bottom: 10px;
 }
 
+=======
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: flex-start; /* جعل العناصر بجانب بعض */
+    align-items: center;
+    background-color: #fff;
+    color: #BAD8B6;
+    padding: 20px; /* تقليل المسافة داخل الهيدر */
+    width: 400px;
+    z-index: 1;
+}
+
+header .logo {
+    margin-right: 20px; /* مسافة بين الشعار والروابط */
+}
+
+header .logo img {
+    height: 90px; /* حجم الشعار */
+    width: auto; /* الحفاظ على النسبة بين الطول والعرض */
+    display: block;
+    margin-left: 50px; /* مسافة من الحافة اليسرى */
+}
+
+header nav {
+    display: flex;
+    align-items: center; /* محاذاة الروابط مع الشعار */
+}
+
+header nav a {
+    color: #658985;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+#old{
+    color: #2e3040;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 18px;
+    font-weight: bold;
+}
+/* Main Content Styling */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0; /* إزالة الهوامش */
+    padding-top: 0;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+}
+
+.text-section {
+    width: 50%;
+}
+
+.text-section h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.text-section button {
+    background-color: #40808e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 200px;
+    border-radius: 5px;
+
+}
+
+.text-section button:hover {
+    background-color: #40808e;
+}
+
+.text-section p a {
+    color: #2c775d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.text-section p a:hover {
+    text-decoration: underline;
+}
+
+
+.image-section {
+    width: 50%;  /* جعل الحاوية تأخذ نصف عرض الصفحة */
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;  /* محاذاة الصورة إلى اليمين */
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+}
+
+.image-section img {
+    width: 800px;  /* جعل الصورة تأخذ 100% من عرض الحاوية */
+    height:1100px ;  /* الحفاظ على النسبة بين العرض والارتفاع */
+    object-fit: cover;  /* تغطي الصورة كامل الحاوية دون تشويه */
+    border-radius: 10px;
+    margin: 0;
+    display: block;
+}
+h1{
+    color: #125250;
+    font-family: "Sofia", sans-serif;
+    font-size: 30px;
+    text-shadow: 3px 3px 3px #bdcee0;
+}
+pre{
+    color: #192355;
+    font-size: 18px;
+    text-align: center;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+}
+
+/* Box Styling */
+.box {
+    width: 450px; /* عرض البوكس */
+    height: 400px; /* ارتفاع البوكس */
+    padding: 0px; /* مسافة داخلية */
+    margin: 100px 150PX; /* محاذاة في المنتصف مع مسافة علوية */
+    background-color: #abe1ce2b; /* خلفية البوكس */
+    box-shadow: 8PX 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل */
+    border-radius: 10px; /* حواف مستديرة */
+    display: flex; /* استخدام Flexbox */
+    flex-direction: column; /* ترتيب العناصر عموديًا */
+    align-items: center; /* تمركز أفقي */
+    text-align: center; /* توسيط النصوص */
+}
+
+/* نصوص داخل البوكس */
+.box h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+>>>>>>> 86a00304fdf4bba6c4475fc84ce5487dfc2007de
