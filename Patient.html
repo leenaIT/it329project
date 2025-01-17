@@ -123,21 +123,30 @@
     background-image: url('calender.png');
 }
 
+.booking-container:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increases shadow to emphasize hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
 .booking-container h4{
-    margin-top: 1px;
+    margin-top: -8px;
     font-size:18px;
  }
 
-        .book-appointment {
+        /*.book-appointment {
             display: inline-block;
             padding: 10px 20px;
             background-color: #4DA1A9;
             color: black;
             text-align: center;
             text-decoration: none;
-            border-radius: 15px;
+            border-radius: 35px;
             box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-        }
+            margin-bottom:-10px;
+            margin-left:-10px;
+            border: 1px solid #2E6366;
+         
+        }*/
 
         .cancel{
             color:grey;
@@ -294,9 +303,9 @@
         </div>
 
         <!-- Booking Container (Extends across two rows) -->
-        <div class="booking-container">
+        <div class="booking-container"  onclick="window.location.href='appointment.html';" >
             <h4 style="font-weight:bold; " >Book an Appointment</h3>
-            <a class="book-appointment" href="appointment.html">Book Now</a>
+            
         </div>
     </div> <!-- main end-->
 
