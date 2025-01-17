@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+      <div class="logo"><img src="logo.png" alt="Clinic Logo"></div>
+      <nav>
+          <a href="#about-us">About Us</a>
+          <a href="#contact-us">Contact Us</a>
+      </nav>
+  </header>
+
+     <!-- Main Content Section with Background -->
+     <div class="background">
+      <div class="box">
+          <div class="content">
+            <div class="role-selection">
+              <h3>Select Your Role</h3>
+              <input type="radio" id="patient" name="role" value="patient">
+              <label for="patient">Patient</label>
+              
+              <input type="radio" id="doctor" name="role" value="doctor">
+              <label for="doctor">Doctor</label>
+
+          </div>
+              <div class="form-container">
+                  <!-- Patient Form -->
+                  <form id="patient-form" class="hidden">
+                      <h3>Patient Form</h3>
+                      <input type="text" placeholder="First Name" required>
+                      <input type="text" placeholder="Last Name" required>
+                      <input type="text" placeholder="ID" required>
+                      <select required>
+                          <option value="" disabled selected>Gender</option>
+                          <option value="male">Male</option>
+                          <option value="female">Female</option>
+                      </select>
+                      <input type="date" required>
+                      <input type="email" placeholder="Email Address" required>
+                      <input type="password" placeholder="Password" required>
+                      <button type="submit">Sign Up</button>
+                  </form>
+                  <!-- Doctor Form -->
+                  <form id="doctor-form" class="hidden">
+                      <h3>Doctor Form</h3>
+                      <input type="text" placeholder="First Name" required>
+                      <input type="text" placeholder="Last Name" required>
+                      <input type="text" placeholder="ID" required>
+                      <input type="file" accept="image/*" required>
+                      <select required>
+                          <option value="" disabled selected>Speciality</option>
+                          <option value="Cardiology">Cardiology</option>
+                          <option value="Neurology">Neurology</option>
+                      </select>
+                      <input type="email" placeholder="Email Address" required>
+                      <input type="password" placeholder="Password" required>
+                      <button type="submit">Sign Up</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-left-1">
+          <h4>Get In Touch</h4>
+          <div class="contact-info-1" id="contact-us">
+              <div class="contact-item-1">
+                  <img src="phone1.png" alt="Phone Icon">
+                  <span class="single-line-1">+996 58765 43210</span>
+              </div>
+              <div class="contact-item-1">
+                  <img src="mail-icon.png" alt="Email Icon">
+                  <span class="single-line-1">medora@gmail.com</span>
+              </div>
+              <div class="contact-item-1">
+                  <img src="location1.png" alt="Location Icon">
+                  <span class="single-line-1">Riyadh, Saudi Arabia</span>
+              </div>
+          </div>
+      </div>
+      
+      <div class="footer-center-1">
+          <a href="index.html">
+          <img src="logo.png" alt="Logo" class="footer-logo-1 logo-toggle">
+      </a>
+      </div>
+      
+      <div class="footer-right-1">
+          <p><strong>Social media</strong></p>
+          <div class="social-icons-1">
+              
+              <img src="facebook1.png" alt="Facebook">
+              <img src="X1.png" alt="Twitter">
+              <img src="instagram1.png" alt="Instagram">
+              <img src="linkedin1.png" alt="LinkedIn">
+          </div>
+      </div>
+      
+      <div class="footer-bottom-1">
+          <p>© 2024 Website. All rights reserved.</p>
+      </div>
+  </footer>
+
+  <script src="java.js"></script>
+
+</body>
+</html>
