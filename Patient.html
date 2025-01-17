@@ -63,7 +63,7 @@
 
         .profile-card {
             padding: 20px;
-            background-color: #4da1a9;
+            background-color: #C2D4D5;
             border-radius: 25px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -109,7 +109,7 @@
         }
 
         .booking-container {
-    grid-row: span 2;
+   
     padding: 20px;
     background-color: #F0F0D7;
     border-radius: 25px;
@@ -118,8 +118,7 @@
     flex-direction: column;
     justify-content: space-between; /* Adjusts vertical alignment */
     align-items: center;
-    height: 40%;
-    margin-top: 100px;
+    height: 80%;
     margin-right: 15px;
     background-image: url('calender.png');
 }
@@ -155,23 +154,35 @@
             border-radius: 25px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-collapse: collapse;
-            background-color: #f0f0d7;
-           text-align:center;
+            text-align:center;
+            height :100%;
+          
+        }
+
+        table{
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
         }
 
         th, td {
             padding: 10px;
-           
-            text-align: left;
+            text-align: center;
             border-radius: 7px;
+           
         }
 
         th {
-            background-color: #4da1a9;
+            background-color: #C2D4D5;
+            width: 100px;
+            height: 20px;
         }
+
         td{
             background-color: #fffaf1;
              border: 3px solid #B7DBE5;
+             width: 200px;
+             height: 100px;
         }
 
         td img{
@@ -284,9 +295,10 @@
 
         <!-- Booking Container (Extends across two rows) -->
         <div class="booking-container">
-            <h4 style="font-weight:bold;" >Book an Appointment</h3>
+            <h4 style="font-weight:bold; " >Book an Appointment</h3>
             <a class="book-appointment" href="appointment.html">Book Now</a>
         </div>
+    </div> <!-- main end-->
 
         <!-- Table and Button Container -->
         <div class="table">
@@ -328,7 +340,7 @@
                 </tr>
             </table>
         </div>
-        </div>
+        
      
         <!-- Slideshow Section for Our Doctors -->
            <div class="slideshow-section">
