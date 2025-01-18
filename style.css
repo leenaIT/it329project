@@ -11,7 +11,7 @@ body, html {
     display: flex;
     justify-content: flex-start; /* جعل العناصر بجانب بعض */
     align-items: center;
-    background-color: #528d831d;
+    background-color:  #528d831d;
     color: #BAD8B6;
     padding: 20px; /* تقليل المسافة داخل الهيدر */
     z-index: 1;
@@ -170,14 +170,17 @@ body, html {
   }
   
   .form-container form button {
-    background: #4CAF50;
-    color: #fff;
+    padding: 10px 20px;
+    background-color: #489787;
+    color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    width: 100%;
   }
   
   .form-container form button:hover {
-    background: #45A049;
+    background-color: #306f61;
   }
   
   /* Hidden Forms */
