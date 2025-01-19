@@ -4,46 +4,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DoctorPage</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <style>
 
-      .container {
-            width:90%;
+        .container {
+            width: 90%;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 30px 30px;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-        }
-
-        .header h1 {
-            font-size: 1.8em;
-            font-family: "Playfair Display", serif;
-            font-optical-sizing: auto;
-            color:#4DA1A9;
-        }
-
-        .header a {
-            color: #4DA1A9;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-
-        .welcome-note {
-            margin: 20px 0;
-            font-size: 1.2em;
         }
 
         .section {
@@ -57,26 +31,40 @@
             padding-bottom: 5px;
             margin-bottom: 10px;
             font-family: "Playfair Display", serif;
-            font-optical-sizing: auto;
         }
 
+        /* Table styling */
+        
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            font-family: Arial, sans-serif;
+            background-color: #fff8ed;
+
         }
 
         table th, table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
+            border: 1px solid #d1d1d1;
+            padding: 15px;
+            text-align: center;
         }
 
         table th {
-            background-color: #f0f0f0;
+            background-color: #d3e6eb;
+            color: #333;
+            font-weight: bold;
         }
 
-        .btn {
+        table tbody tr:nth-child(odd) {
+            background-color: #fffef5;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table .btn {
             padding: 5px 10px;
             background-color: #4DA1A9;
             color: #fff;
@@ -86,45 +74,99 @@
             font-size: 0.9em;
         }
 
-        .btn:hover {
+        table .btn:hover {
             background-color: #F0F0D7;
+            color: #333;
         }
 
-        .link {
+        table .link {
             color: #4DA1A9;
             text-decoration: none;
         }
 
-        .link:hover {
+        table .link:hover {
             text-decoration: underline;
         }
-    </style>
+
+        .welcome-text {
+            font-size: 1.2em;
+            font-family: 'Playfair Display', serif;
+            color: #4DA1A9;
+            margin: 20px;
+            text-align: left;
+        }
+        .card-body {
+    display: flex;
+    align-items: center; 
+        }
+
+        .card-body img {
+            margin-right: 20px; 
+        }
+
+        .doctor-card {
+            width: 500px;
+            margin: 0 30px 30px;
+            padding: 15px;
+            background-color: #d3e6eb;
+            border: 1px solid #d1d1d1;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            font-family: 'Playfair Display', serif;
+            color: #333;
+        }
+
+        .doctor-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #4DA1A9;
+            object-fit: cover;
+        }
+
+        .doctor-card p {
+            margin: 10px 0;
+            padding: 5px 10px;
+            background-color: #fffaf1;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-family:roboto;
+        }
+        .doctor-card #log{
+            padding-left: 410px;
+            text-decoration: underline;
+
+        }
+        </style>
     </head>
     <body>
-        
-         <!-- Header Section -->
+        <!-- Header Section -->
     <header>
-        <div class="logo"><a href="medora.html" target="_"><img src="logo.png" alt="Clinic Logo" ></a></div>
+        <div class="logo"><img src="logo.png" alt="Clinic Logo"></div>
         <nav>
-            <a href="#about-us">About Us</a>
-            <a href="#contact-us">Contact Us</a>
+          <a href="medora.html">Home</a>
+          <a href="#contact-us">Contact Us</a>
         </nav>
     </header>
 
-    
+        <div class="welcome-text">
+            <h2>Welcome, Dr. Amani Alnasser</h2>
+        </div>
+        
+        <div class="doctor-card">
+            <a id="log" href="medora.html">log out</a>
+            <div class="card-body">
+                <img src="icon.jpg" alt="Profile Picture">
+                <div>
+                    <p><strong>ID:</strong> <span id="doctor-id">127789</span></p>
+                    <p><strong>Date of Birth:</strong> <span id="dob">1989-08-18</span></p>
+                    <p><strong>Email:</strong> <span id="email">AmaniNasser@gmail.com</span></p>
+                </div>
+            </div>
+        </div>
 
         <div class="container">
-            <div class="header">
-                <h1>Welcome Dr. Amani alnasser</h1>
-                <a href="#">Log out</a>
-            </div>
-    
-            <div class="welcome-note">
-            <p><strong>ID:</strong> <span id="doctor-id">127789</span></p>
-            <p><strong>Date of Birth:</strong> <span id="dob">1989-08-18</span></p>
-            <p><strong>Email:</strong> <span id="email">AmaniNasser@gmail.com</span></p>
-            </div>
-    
             <div class="section">
                 <h2>Upcoming Appointments</h2>
                 <table>
@@ -161,7 +203,6 @@
                     </tbody>
                 </table>
             </div>
-    
             <div class="section">
                 <h2>Your Patients</h2>
                 <table>
@@ -190,11 +231,11 @@
                 </table>
             </div>
         </div>
-    
-<footer>
+         <!-- Footer Section -->
+    <footer>
         <div class="footer-left-1">
-            <h4>Contact Us</h4>
-            <div class="contact-info-1">
+            <h4>Get In Touch</h4>
+            <div class="contact-info-1" id="contact-us">
                 <div class="contact-item-1">
                     <img src="phone1.png" alt="Phone Icon">
                     <span class="single-line-1">+996 58765 43210</span>
@@ -231,7 +272,5 @@
             <p>© 2024 Website. All rights reserved.</p>
         </div>
     </footer>
-
-
-</body>
+    </body>
 </html>
