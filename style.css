@@ -232,3 +232,51 @@ body, html {
   .login-container button:hover {
     background-color: #306f61;
   }
+
+  .profile-card {
+    padding: 20px;
+    background-color: #C2D4D5;
+    margin: 30px 30px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+    width: 500px;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #4DA1A9;
+    object-fit: cover;
+}
+
+.profile-details p {
+    margin: 10px 0;
+    padding: 5px 15px;
+    background-color: #fffaf1;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family:roboto;
+}
+
+.profile-details p strong {
+    color: #4DA1A9;
+  
+}
+
+.profile-details p strong {
+    color: #4DA1A9;
+    margin-right: 10px;
+    text-align: left; /* Add space between bold text and normal text */
+    
+}
+
+.profile-details p span {
+    flex-grow: 1; /* Push span (unbold text) to the far right */
+    text-align: right;
+    color:#4f4f4f;
+}
