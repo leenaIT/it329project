@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
     <title>Patient Home Page</title>
     <style>
         body {
@@ -28,24 +30,6 @@
         .logo img {
             width: 90px;
             height: 90px;
-        }
-
-        .welcome-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .welcome {
-            color: #4DA1A9;
-            font-size: 1.7em;
-            margin-top: 1em;
-        }
-
-        .sign-out a {
-            color: #4DA1A9;
-            text-decoration: underline;
         }
 
         /* Wrapper container for the two main rows */
@@ -240,6 +224,7 @@
       margin-bottom:10px;
 }
 
+  
 .slideshow-image {
     width: 130px;
     border-radius: 10px;
@@ -283,13 +268,10 @@
 </head>
 <body>
     <header></header>
-
-    <div class="welcome-container">
-        <div class="welcome">Welcome, [Patient Name]!</div>
-        <div class="sign-out">
-            <a href="index.html">Sign Out</a>
+    <div class="welcome">
+        <h2>Welcome, Dr. Amani Alnasser</h2>
+        <a href="medora.html" id="sign-out">Sign Out</a>
         </div>
-    </div>
 
     <div class="main-container">
        <!-- Profile Card -->

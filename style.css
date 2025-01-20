@@ -5,6 +5,8 @@ body, html {
     height: 100%;
     font-family: Arial, sans-serif;
   }
+
+ 
   
   /* Header Styling */
   header {
@@ -279,4 +281,35 @@ body, html {
     flex-grow: 1; /* Push span (unbold text) to the far right */
     text-align: right;
     color:#4f4f4f;
+}
+
+.welcome {
+  font-size: 1.2em;
+  font-family: 'Playfair Display', serif;
+  color: #4DA1A9;
+  margin: 20px;
+  text-align: left;
+}
+
+
+.welcome {
+  display: flex; /* لجعل الترحيب والرابط على نفس السطر */
+  justify-content: space-between; /* توزيع العناصر: النص في اليسار والرابط في اليمين */
+  align-items: center; /* محاذاة العناصر عموديًا في المنتصف */
+  margin: 20px; /* مساحة حول القسم */
+  font-family: 'Playfair Display', serif;
+}
+
+#welcome h2 {
+  margin: 0; /* إزالة الهوامش الافتراضية */
+}
+
+#sign-out {
+  text-decoration: underline; /* خط تحت النص */
+  color: #4DA1A9; /* لون الرابط */
+  cursor: pointer; /* تغيير شكل مؤشر الفأرة */
+}
+
+#sign-out:hover {
+  color: #2f2f2f; /* لون مختلف عند التمرير */
 }
