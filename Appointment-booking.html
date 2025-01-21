@@ -1,73 +1,88 @@
 ﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title> Appointment Booking</title>
-
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-    body {
-    font-family: Arial, sans-serif;
-    background-color: #b7dbe5;
-    color: #333;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fffaf1;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-image: url("appointment-background.png");
+            height: 155%;
+        }
+       
+        header, footer {
+            background-color: #fffaf1;
+            padding: 7px 0;
+            z-index: 10;
+        }
 
-.container {
-    background-color: #f0f0d7;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-}
+        .page-content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 80%; /* Adjust this value to make the content area wider */
+            margin: 0 auto; /* Center the content horizontally */
+        }
 
-h1 {
-    color: #4da1a9;
-}
+        .container {
+            background-color: #f0f0d7;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Increased width for a wider content area */
+            min-height: 300px;
+            box-sizing: border-box;
+        }
 
-form {
-    margin-bottom: 20px;
-}
+        h1 {
+            color: #4da1a9;
+        }
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
+        form {
+            margin-bottom: 20px;
+        }
 
-select, input, textarea, button {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #bad8b6;
-}
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
 
-button {
-    background-color: #4da1a9;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        select, input, textarea, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #bad8b6;
+        }
 
-button:hover {
-    background-color: #bad8b6;
-}
+        button {
+            background-color: #4da1a9;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
+        button:hover {
+            background-color: #bad8b6;
+        }
 
-
+       
     </style>
 </head>
 
 <body>
-
-<!-- Header Section -->
+    <!-- Header Section -->
     <header>
         <div class="logo"><img src="logo.png" alt="Clinic Logo"></div>
         <nav>
@@ -76,38 +91,39 @@ button:hover {
         </nav>
     </header>
 
- <div class="container">
-        <h1>Book an Appointment</h1>
-        
-        <!-- First Form: Select Specialty -->
-        <form id="specialtyForm">
-            <label for="specialty">Choose a Specialty:</label>
-            <select id="specialty" name="specialty">
-                <option value="orthopedist">Orthopedist</option>
-                <option value="neurologist">Neurologist</option>
-                <option value="cardiologist">Cardiologist</option>
-                <option value="pediatrician">Pediatrician</option>
-                <option value="womens-health">Women's Health</option>
-            </select>
-            <button type="submit">Next</button>
-        </form>
-        
-        <!-- Second Form: Select Doctor and Other Details -->
-        <form id="bookingForm" style="display:none;">
-            <label for="doctor">Choose a Doctor:</label>
-            <select id="doctor" name="doctor">
-                <!-- Options will be dynamically updated -->
-            </select>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required>
-            <label for="time">Time:</label>
-            <input type="time" id="time" name="time" required>
-            <label for="reason">Reason for Visit:</label>
-            <textarea id="reason" name="reason" rows="3" required></textarea>
-            <button type="submit">Book Appointment</button>
-        </form>
+    <!-- Content Section -->
+    <div class="page-content">
+        <div class="container">
+            <h1>Book an Appointment</h1>
+            <!-- First Form -->
+            <form id="specialtyForm">
+                <label for="specialty">Choose a Specialty:</label>
+                <select id="specialty" name="specialty">
+                    <option value="orthopedist">Orthopedist</option>
+                    <option value="neurologist">Neurologist</option>
+                    <option value="cardiologist">Cardiologist</option>
+                    <option value="pediatrician">Pediatrician</option>
+                    <option value="womens-health">Women's Health</option>
+                </select>
+                <button type="submit">Next</button>
+            </form>
+
+            <!-- Second Form -->
+            <form id="bookingForm" style="display:none;">
+                <label for="doctor">Choose a Doctor:</label>
+                <select id="doctor" name="doctor"></select>
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+                <label for="reason">Reason for Visit:</label>
+                <textarea id="reason" name="reason" rows="3" required></textarea>
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-left-1">
             <h4>Get In Touch</h4>
@@ -150,42 +166,40 @@ button:hover {
     </footer>
 
     <script>
-    const specialtyForm = document.getElementById('specialtyForm');
-const bookingForm = document.getElementById('bookingForm');
-const doctorSelect = document.getElementById('doctor');
+        const specialtyForm = document.getElementById('specialtyForm');
+        const bookingForm = document.getElementById('bookingForm');
+        const doctorSelect = document.getElementById('doctor');
 
-specialtyForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const specialty = document.getElementById('specialty').value;
-    updateDoctorOptions(specialty);
-    specialtyForm.style.display = 'none';
-    bookingForm.style.display = 'block';
-});
+        specialtyForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const specialty = document.getElementById('specialty').value;
+            updateDoctorOptions(specialty);
+            specialtyForm.style.display = 'none';
+            bookingForm.style.display = 'block';
+        });
 
-function updateDoctorOptions(specialty) {
-    const doctors = {
-        orthopedist: ['Dr. Hanan Alsaleh', 'Dr. Abdullah Omar'],
-        neurologist: ['Dr. Turki Mohammed', 'Dr. Abdullah Omar'],
-        cardiologist: ['Dr. Sultan Ahmed'],
-        pediatrician: ['Dr. Noura Abdulrhman'],
-        'womens-health': ['Dr. Noura Abdulrhman']
-    };
-    
-    doctorSelect.innerHTML = '';
-    doctors[specialty].forEach(doctor => {
-        const option = document.createElement('option');
-        option.value = doctor;
-        option.textContent = doctor;
-        doctorSelect.appendChild(option);
-    });
-}
+        function updateDoctorOptions(specialty) {
+            const doctors = {
+                orthopedist: ['Dr. Hanan Alsaleh', 'Dr. Abdullah Omar'],
+                neurologist: ['Dr. Turki Mohammed', 'Dr. Abdullah Omar'],
+                cardiologist: ['Dr. Sultan Ahmed'],
+                pediatrician: ['Dr. Noura Abdulrhman'],
+                'womens-health': ['Dr. Noura Abdulrhman']
+            };
+            doctorSelect.innerHTML = '';
+            doctors[specialty].forEach(doctor => {
+                const option = document.createElement('option');
+                option.value = doctor;
+                option.textContent = doctor;
+                doctorSelect.appendChild(option);
+            });
+        }
 
-bookingForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    alert('Appointment booked successfully!');
-    window.location.href = 'Medora.html'; // Redirect to homepage
-});
-
+        bookingForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Appointment booked successfully!');
+            window.location.href = 'patient.html'; // Redirect to homepage
+        });
     </script>
 </body>
 </html>
