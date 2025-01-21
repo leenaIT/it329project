@@ -15,79 +15,99 @@
             color: #333;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
         }
 
         /* Welcome Section */
         .welcome {
-            margin: 20px 30px;
+            margin: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            animation: slideIn 0.8s ease-in-out;
         }
 
         .welcome h2 {
             font-family: 'Playfair Display', serif;
+            color: #000;
         }
 
         .welcome a {
             text-decoration: none;
-            color: #4DA1A9;
+            color: #BAD8B6;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         .welcome a:hover {
             text-decoration: underline;
+            color: #2A7D84;
         }
 
         /* Profile Card Styling */
         .profile-card {
-            margin: 20px 30px;
-            padding: 20px;
-            background-color: #f0f4f8;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-        }
+    margin: 10px 20px; /* تقليل المسافة حول البطاقة */
+    padding: 20px; /* تقليل الحشو داخل البطاقة */
+    background: linear-gradient(145deg, #4da1a9, #9ad2d5);
+    border-radius: 10px; /* تقليل انحناء الزوايا */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    color: #fff;
+    text-align: left;
+    animation: fadeIn 1s ease-in-out;
+}
 
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
+.profile-image {
+    width: 90px; /* تقليل حجم الصورة */
+    height: 90px; /* تقليل حجم الصورة */
+    margin-bottom: 15px; /* تقليل المسافة بين الصورة والمحتوى */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
 
         .profile-details p {
-            margin: 5px 0;
+            margin: 8px 0;
         }
 
         .profile-details strong {
-            color: #4DA1A9;
+            color: #fff;
+        }
+
+        .profile-details p span {
+            font-size: 1.2em;
         }
 
         /* Container Styling */
         .container {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
+    padding: 15px;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: -10px; /* رفع الجداول أقرب إلى البطاقة */
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.section {
+    background-color: #ffffff;
+    border-radius: 8px; /* تقليل انحناء الزوايا */
+    padding: 15px; /* تقليل الحشو داخل الأقسام */
+    margin-bottom: 20px; /* تقليل المسافة بين الأقسام */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4em;
-            color: #333;
-            border-bottom: 2px solid #4DA1A9;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            
-        }
-    
-
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    color: #333;
+    border-bottom: 2px solid #4DA1A9;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
 
         /* Table Styling */
         table {
@@ -95,20 +115,18 @@
             border-collapse: collapse;
             margin-top: 10px;
             background-color: #fff;
-            font-family: Arial, sans-serif;
             text-align: center;
         }
 
         table th, table td {
-            border: 1px solid #c4dfe6;
+            border: 1px solid #e0e0e0;
             padding: 15px;
-            border-radius: 5px;
         }
 
         table th {
-            background-color: #4DA1A9;
-            color: #fff;
-            font-weight: bold;
+            background: linear-gradient(135deg, #4da1a9, #7cc7cb);
+            color: white;
+            text-transform: uppercase;
         }
 
         table tbody tr:nth-child(odd) {
@@ -119,57 +137,108 @@
             background-color: #fffef5;
         }
 
-        .btn {
-            padding: 10px 20px;
-            background-color: #4DA1A9;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        table tbody tr:hover {
+            background-color: #eef7fa;
             transition: background-color 0.3s ease;
         }
 
-        .btn:hover {
-            background-color: #367B7D;
+        /* Button Styling */
+        .btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #4DA1A9, #367B7D);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
         }
 
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Link Styling */
         .link {
             color: #4DA1A9;
             text-decoration: none;
             font-weight: bold;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
         .link:hover {
-            text-decoration: underline;
             color: #367B7D;
         }
 
-        table tbody tr:hover {
-    background-color: #eef7fa;
-}
+        .link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #4DA1A9;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .link:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
         @media (max-width: 768px) {
-    .welcome {
-        flex-direction: column;
-        text-align: center;
-    }
+            .welcome {
+                flex-direction: column;
+                text-align: center;
+            }
 
-    .profile-card {
-        flex-direction: column;
-        text-align: center;
-    }
+            .profile-card {
+                padding: 20px;
+            }
 
-    table {
-        font-size: 0.9em;
-    }
+            table {
+                font-size: 0.9em;
+            }
 
-    .btn {
-        padding: 8px 16px;
-    }
-}
-
-
-       
+            .btn {
+                padding: 10px 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -190,7 +259,7 @@
 
     <!-- Profile Card -->
     <div class="profile-card">
-        <img class="profile-image" src="icon.jpg" alt="John Doe">
+        <img class="profile-image" src="icon.jpg" alt="Doctor Image">
         <div class="profile-details">
             <p><strong>ID:</strong> <span>10198322964</span></p>
             <p><strong>Full Name:</strong> <span>Reema Khalid</span></p>
@@ -253,13 +322,13 @@
                         <td>Leena Naser</td>
                         <td>40</td>
                         <td>Female</td>
-                        <td><a class="link" href="Medication.html" title="Prescribe medication for this patient">Prescribe</a></td>
+                        <td><a class="link" href="Medication.html">Prescribe</a></td>
                     </tr>
                     <tr>
                         <td>Majed Saleh</td>
                         <td>35</td>
                         <td>Male</td>
-                        <td><a class="link" href="Medication.html" title="Prescribe medication for this patient">Prescribe</a></td>
+                        <td><a class="link" href="Medication.html">Prescribe</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -304,6 +373,8 @@
         </div>
     </footer>
 </body>
+
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
     // Sort the "Upcoming Appointments" table by date and time
@@ -356,7 +427,4 @@
 });
 
 </script>
-
-
-
 </html>
