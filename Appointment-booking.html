@@ -18,8 +18,8 @@
         }
        
         header, footer {
-            background-color: #fffaf1;
-            padding: 7px 0;
+            background-color: #a6dcd4;
+            padding: 3px 0;
             z-index: 10;
         }
 
@@ -34,7 +34,7 @@
         }
 
         .container {
-            background-color: #f0f0d7;
+            background-color: #fffaf1;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -103,7 +103,7 @@
                     <option value="neurologist">Neurologist</option>
                     <option value="cardiologist">Cardiologist</option>
                     <option value="pediatrician">Pediatrician</option>
-                    <option value="womens-health">Women's Health</option>
+                    <option value="women's-health">Women's Health</option>
                 </select>
                 <button type="submit">Next</button>
             </form>
@@ -180,12 +180,13 @@
 
         function updateDoctorOptions(specialty) {
             const doctors = {
-                orthopedist: ['Dr. Hanan Alsaleh', 'Dr. Abdullah Omar'],
-                neurologist: ['Dr. Turki Mohammed', 'Dr. Abdullah Omar'],
-                cardiologist: ['Dr. Sultan Ahmed'],
-                pediatrician: ['Dr. Noura Abdulrhman'],
-                'womens-health': ['Dr. Noura Abdulrhman']
+                orthopedist: ['Dr. Hanan Alsaleh'],
+                neurologist: ['Dr.Haifa Sultan', 'Dr. Abdullah Omar'],
+                cardiologist: ['Dr. Sultan Ahmed', 'Dr.Mohammed Bin Faisal','Dr.Ghada Khalid'],
+                pediatrician: ['Dr.Salman Abdulaziz', 'Dr.Sultan Ahmed'],
+              "women's-health" : ['Dr. Noura Abdulrhman' ,'Dr.Sarah Abdullah']
             };
+
             doctorSelect.innerHTML = '';
             doctors[specialty].forEach(doctor => {
                 const option = document.createElement('option');
