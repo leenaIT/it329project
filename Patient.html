@@ -41,13 +41,18 @@
 
         .welcome {
             color: #4DA1A9;
-            font-size: 1.7em;
+            font-size: 1.4em;
             margin-top: 1em;
         }
 
-        .sign-out a {
+        #sign-out a {
             color: #4DA1A9;
             text-decoration: underline;
+
+        }
+
+        #sign-out{
+            font-size: 22px;
         }
 
         /* Wrapper container for the two main rows */
@@ -73,6 +78,7 @@
             gap: 20px;
             box-sizing: border-box;
             width: 700px;
+            height:200px;
         }
 
         .profile-image {
@@ -121,8 +127,10 @@
     flex-direction: column;
     justify-content: space-between; /* Adjusts vertical alignment */
     align-items: center;
-    height: 80%;
-    margin-right: 15px;
+    height: 65%;
+    width:300px;
+    margin-right: 75px;
+    margin-top: 25px;
     background-image: url('calender.png');
 }
 
@@ -144,6 +152,23 @@
         .cancel:hover,.navigation-button:hover{
            color: #2f2f2f;
         }
+
+        .book-appointment{
+            display: inline-block;
+            padding: 5px 5px;
+            font-size: 14px;
+            background-color: #4DA1A9;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 35px;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom:-10px;
+            margin-left:-10px;
+            border: 1px solid #2E6366;
+            
+        }
+
         .book-appointment:hover {
             background-color: #367B7D;
         }
@@ -159,9 +184,7 @@
         }
 
         table{
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
+           
         }
 
         th, td {
@@ -169,6 +192,10 @@
             text-align: center;
             border-radius: 7px;
            
+        }
+
+        tr{
+            display: table-row;
         }
 
         th {
@@ -270,11 +297,33 @@
 
 
     </style>
+    <script>
+        function sortAppointmentsByDate() {
+            const table = document.querySelector("table");
+            const rows = Array.from(table.querySelectorAll("tr:nth-child(n+2)"));
+            rows.sort((a, b) => {
+                const dateA = new Date(a.cells[0].innerText);
+                const dateB = new Date(b.cells[0].innerText);
+                return dateA - dateB;
+            });
+            rows.forEach(row => table.appendChild(row));
+        }
+        
+
+        window.addEventListener('DOMContentLoaded', () => {
+            sortAppointmentsByDate();  // Automatically sorts appointments on page load
+        });
+    </script>
+
 </head>
 <body>
-    <header></header>
+    <!-- Header Section -->
+    <header>
+       
+    </header>
+
     <div class="welcome">
-        <h2>Welcome, Reema Khalid</h2>
+        <h2>Welcome, Reema !</h2>
         <a href="medora.html" id="sign-out">Sign Out</a>
     </div>
 
@@ -291,7 +340,7 @@
         </div>
 
         <!-- Booking Container (Extends across two rows) -->
-        <div class="booking-container"  onclick="window.location.href='appointment.html';" >
+        <div class="booking-container"  onclick="window.location.href='Appointment-booking.html';" >
             <h4 style="font-weight:bold; " >Book an Appointment</h3>
             
         </div>
@@ -335,6 +384,8 @@
                     <td>Pending</td>
                     <td><a href="#" class="cancel">Cancel</a></td>
                 </tr>
+
+               
             </table>
         </div>
         
@@ -383,6 +434,46 @@
             <p class="product-title">Dr.Noura Abdulrhman</p>
             <p class="stars">★★★★★</p>
             <p class="product-price">Women's Health </p>
+        </div>
+
+         <!-- Slide 6 -->
+         <div class="slide">
+            <img src="doctor-sarah.png" alt="Doctor Sarah" class="slideshow-image">
+            <p class="product-title">Dr.Sarah Abdullah</p>
+            <p class="stars">★★★★★</p>
+            <p class="product-price">Women's Health </p>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide">
+            <img src="doctor-ghada.png" alt="Doctor ghada" class="slideshow-image">
+            <p class="product-title">Dr.Ghada Khalid</p>
+            <p class="stars">★★★★★</p>
+            <p class="product-price">Cardiologist </p>
+        </div>
+
+         <!-- Slide 8-->
+         <div class="slide">
+            <img src="doctor-salman.png" alt="Doctor salman" class="slideshow-image">
+            <p class="product-title">Dr.Salman Abdulaziz </p>
+            <p class="stars">★★★★☆</p>
+            <p class="product-price">Pediatrician </p>
+        </div>
+
+         <!-- Slide 9-->
+         <div class="slide">
+            <img src="doctor-mohammed.png" alt="Doctor Mohammed" class="slideshow-image">
+            <p class="product-title">Dr.Mohammed Bin Faisal </p>
+            <p class="stars">★★★★★</p>
+            <p class="product-price">Cardiologist </p>
+        </div>
+        
+        <!-- Slide 10-->
+        <div class="slide">
+            <img src="doctor-Haifa.png" alt="Doctor haida" class="slideshow-image">
+            <p class="product-title">Dr.Haifa  Sultan </p>
+            <p class="stars">★★★★★</p>
+            <p class="product-price">Neurologist </p>
         </div>
         </div>
 
@@ -448,9 +539,52 @@
         </div>
 </div>
 
+<!-- Footer -->
+    <footer>
+        <div class="footer-left-1">
+            <h4>Get In Touch</h4>
+            <div class="contact-info-1" id="contact-us">
+                <div class="contact-item-1">
+                    <img src="phone1.png" alt="Phone Icon">
+                    <span class="single-line-1">+996 58765 43210</span>
+                </div>
+                <div class="contact-item-1">
+                    <img src="mail-icon.png" alt="Email Icon">
+                    <span class="single-line-1">medora@gmail.com</span>
+                </div>
+                <div class="contact-item-1">
+                    <img src="location1.png" alt="Location Icon">
+                    <span class="single-line-1">Riyadh, Saudi Arabia</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-center-1">
+            <a href="index.html">
+            <img src="logo.png" alt="Logo" class="footer-logo-1 logo-toggle">
+        </a>
+        </div>
+        
+        <div class="footer-right-1">
+            <p><strong>Social media</strong></p>
+            <div class="social-icons-1">
+                
+                <img src="facebook1.png" alt="Facebook">
+                <img src="X1.png" alt="Twitter">
+                <img src="instagram1.png" alt="Instagram">
+                <img src="linkedin1.png" alt="LinkedIn">
+            </div>
+        </div>
+        
+        <div class="footer-bottom-1">
+            <p>© 2024 Website. All rights reserved.</p>
+        </div>
+    </footer>
 
 
-  <script>
+  
+   <script>
+   
   function showServices() {
     document.getElementById('doctors-slideshow').parentElement.style.display = 'none';
     document.getElementById('services-section').style.display = 'block';
@@ -460,7 +594,8 @@ function showDoctors() {
     document.getElementById('services-section').style.display = 'none';
     document.getElementById('doctors-slideshow').parentElement.style.display = 'block';
 }
-  </script>
-   
+
+
+   </script>
 </body>
 </html>
