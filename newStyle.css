@@ -1,0 +1,580 @@
+
+@font-face {
+    font-family: 'WondarQuason';
+    src: url('Wondar Quason Free.ttf') format('truetype');
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #abe1ce34;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Header Styling */
+header {
+    display: flex;
+    justify-content: flex-start; /* جعل العناصر بجانب بعض */
+    align-items: center;
+    color: #ffffff;
+    padding: 5px; /* تقليل المسافة داخل الهيدر */
+    width: 1500px;
+    z-index: 1;
+}
+
+header .logo {
+    margin-right: 20px; /* مسافة بين الشعار والروابط */
+}
+
+header .logo img {
+    height: 100px; /* حجم الشعار */
+    width: auto; /* الحفاظ على النسبة بين الطول والعرض */
+    display: block;
+    margin-left: 50px; /* مسافة من الحافة اليسرى */
+}
+
+header nav {
+    display: flex;
+    align-items: center; /* محاذاة الروابط مع الشعار */
+}
+
+header nav a {
+    color: #658985;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+#old{
+    color: #2e3040;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+/* Main Content Styling */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0; /* إزالة الهوامش */
+    padding-top: 0;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.text-section {
+    width: 50%;
+}
+
+.text-section h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.text-section button {
+    background-color: #52837e;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+
+}
+
+.text-section button:hover {
+    background-color: #234441;
+}
+
+.text-section p a {
+    color:#3b7d66;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.text-section p a:hover {
+    text-decoration: underline;
+}
+
+
+.image-section {
+    width: 50%;  /* جعل الحاوية تأخذ نصف عرض الصفحة */
+    height: 100vh;
+    display: flex;
+    justify-content: flex-end;  /* محاذاة الصورة إلى اليمين */
+    align-items: flex-start;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    z-index: 5;
+}
+
+.image-section img {
+
+    object-fit: cover;  /* تغطي الصورة كامل الحاوية دون تشويه */
+    border-radius: 70px 0px 0px 0px;
+    margin: 0;
+    display: block;
+}
+.text-section h1{
+    color: #125250;
+    /*font-family: 'WondarQuason', sans-serif;*/
+    font-family: "Sofia", sans-serif;
+    font-size: 1300px;
+}
+.text-section pre{
+    color: #192355;
+    font-size: 30px;
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+    margin-top: 35px;
+}
+
+/* Box Styling */
+.box {
+    width: 100%; /* عرض البوكس */
+    height: 649px; /* ارتفاع البوكس */
+    padding: 0px; /* مسافة داخلية */
+    margin-top: 60px; /* محاذاة في المنتصف مع مسافة علوية */
+    /*margin-left: 50px;*/
+    border-radius: 10px; /* حواف مستديرة */
+    align-items: center; /* تمركز أفقي */
+    text-align: center; /* توسيط النصوص */
+}
+
+/* نصوص داخل البوكس */
+.box h1 {
+    font-size: 100px;
+    margin-bottom: 10px;
+}
+
+
+
+.services {
+    width: 100%; 
+    height: 450px;
+    background-color: #52837eec;
+    border-radius: 100px 0px 0px 100px;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.services h2{
+color: #fff;
+font-family: "WondarQuason", sans-serif;
+font-size: 40px;
+text-align: center;
+padding-top: 30px;
+}
+
+
+        .services-carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 15px;
+    margin-left: 35px;
+  }
+
+  .services-carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: calc(100% - 80px); /* Adjust for arrows */
+  }
+
+  .service {
+    flex: 0 0 33.33%; /* Visible services: 3 (100% / 3) */
+    text-align: center;
+    padding: 15px;
+  }
+
+  .service h3{
+    color: #c3f1e1;
+    font-family: "WondarQuason", sans-serif;
+}
+
+.service p{
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+}
+
+.service img {
+    width: 300px; 
+      height: 200px; 
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .carousel-arrow {
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    background: transparent;
+  }
+
+
+
+  .left-arrow {
+    left: -15px;
+    margin-top: -80px;
+  }
+
+  .right-arrow {
+    right: 55px;
+    margin-top: -80px;
+  }
+  .carousel-arrow img {
+    width: 40px;
+    height: 40px;
+  }
+
+/*
+.services {
+    width: 100%; 
+    height: 500px;
+    background-color: #52837eec;
+    border-radius: 100px 0px 0px 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.services h2{
+color: #fff;
+font-family: "WondarQuason", sans-serif;
+font-size: 40px;
+text-align: center;
+padding-top: 30px;
+}
+
+.services h3{
+    color: #c3f1e1;
+    font-family: "WondarQuason", sans-serif;
+}
+
+.services p{
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+}
+
+.service-container{
+    display: flex; 
+    gap: 20px; 
+    padding: 50px;
+    margin-left: 100px;
+}
+
+.imageSer-box {
+    text-align: center; 
+    width: 30%; 
+  }
+
+ 
+  .imageSer-box img {
+    width: 300px; 
+      height: 200px; 
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+
+  .imageSer-box p {
+    margin-top: 10px; 
+    font-size: 16px; 
+    color: #333; 
+  }
+
+  .arrow {
+    position: absolute;
+    top: 51%;
+    transform: translateY(100%);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    background: none; 
+    padding-left: 82%;
+  }
+
+  .arrow img {
+    width: 40px;
+    height: 40px;
+  }
+*/
+
+  
+/*
+.slideshow-section {
+    margin-top: 150px;
+    padding: 10px;
+    border-top: 3px solid #4da1a9;
+    width: 100%;
+
+     
+}
+
+.slideshow-container {
+    display: flex;
+    gap: 35px;
+    overflow:scroll;
+
+
+}
+
+.slide {
+    min-width: 200px;
+    flex-shrink: 0;
+    text-align: center;
+    align-items: center; /* Vertically center 
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom:10px;
+}
+
+.slideshow-image {
+    width: 130px;
+    border-radius: 10px;
+}
+
+
+.product-title {
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+
+.description{
+    font-size:12px;
+  
+}
+*/
+
+
+
+.about-us {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 0px 60px 60px 0px;
+    font-family: Arial, sans-serif;
+    line-height: 1.8;
+    color: #333;
+    text-align: left;
+}
+.about-us h2 {
+    font-size: 28px;
+    color: #125250;
+    margin-bottom: 20px;
+}
+.about-us blockquote {
+    font-size: 18px;
+    color: #658985;
+    margin: 20px 0;
+    font-style: italic;
+    border-left: 5px solid #bad8b6;
+    padding-left: 15px;
+}
+
+.reviews {
+    position: relative;
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      overflow: visible;
+}
+
+#cli {
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: "WondarQuason", sans-serif;
+    color: #125250;
+    text-align: center;
+}
+
+#Client1 {
+    width: 40%;
+    height: 75%;
+    background-color: rgba(255, 255, 255, 0.5); 
+    margin-left: 30%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px; 
+}
+
+#Client1 img {
+    width: 90px; 
+    height: 90px; 
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 1px solid #658985; 
+}
+
+#Client1 pre {
+    font-size: 14px;
+    font-style: italic;
+    color: #658985; 
+    text-align: center;
+    white-space: pre-wrap; 
+}
+
+#Client1 p {
+    font-size: 15px;
+    font-style: italic;
+    margin-top: 20px;
+    color: #658985;
+}
+
+.carousel-item {
+    position: absolute;
+      width: 450px;
+      height: 250px;
+      opacity: 0.5;
+      transform: scale(0.8);
+      transition: all 0.5s ease;
+      text-align: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+  }
+
+  .carousel-item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: absolute;
+    top: -30px;
+    left: 30px;
+    border: 4px solid #ffffff; 
+  }
+
+  .carousel-item h3 {
+    font-family: "WondarQuason", sans-serif;
+    margin: 10px 0 5px;
+    font-size: 1.2em;
+    margin-top: 30px;
+    color: #53766a;
+  }
+
+  .carousel-item pre {
+    font-size: 0.9em;
+    color: #555;
+    margin-top: 20px;
+  }
+
+  .carousel-item.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%) scale(1);
+  }
+
+  .carousel-item.left {
+    left: 1%;
+    transform: translateX(0) scale(0.8);
+    z-index: 2;
+  }
+
+  .carousel-item.right {
+    left: 67.5%;
+    transform: translateX(0) scale(0.8);
+    z-index: 2;
+  }
+
+  .carousel-item.hidden {
+    opacity: 0;
+    z-index: 1;
+    transform: scale(0.6);
+  }
+
+
+/* Footer */
+footer {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0; /* إزالة الحشو */
+    position: relative;
+    flex-wrap: wrap;
+    color: #0b3436;
+    height: 200px; /* تقليل الارتفاع */
+    border-top: 2px solid #52837eec; /* إضافة خط أفقي في الأعلى */
+}
+
+.footer-left-1, .footer-center-1, .footer-right-1 {
+    flex: 1;
+    padding: 0.5em; /* تقليل الحشو الداخلي */
+    text-align: center;
+}
+
+.footer-center-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo-1 {
+    width: 100px; /* تقليل حجم الشعار */
+}
+
+.contact-info-1 {
+    display: flex;
+    gap: 10px; /* تقليل الفجوة بين العناصر */
+    align-items: center;
+}
+
+.footer-left-1 img, .footer-right-1 img, .social-icon-1 {
+    max-width: 1.5em; /* تقليل الحجم */
+    height: auto;
+    margin-right: 0.5em; /* تقليل المسافة اليمنى */
+}
+
+.single-line-1 {
+    white-space: nowrap;
+}
+
+.footer-bottom-1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.5em; /* تقليل المسافة العلوية */
+}
+
+.footer-bottom-1 p {
+    padding: 0.5em; /* تقليل الحشو */
+    background-color: #ffffff;
+    font-size: 0.75em; /* تقليل حجم الخط */
+    color: #153d45;
+    border-top: 0.0625em solid #ccc; /* 1px */
+}
