@@ -256,40 +256,6 @@ I couldn’t be happier."</pre>
     </footer>
 
     
-
- 
-
-    <script>
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        let activeIndex = 1; // Start with the second item as active
-    
-        function updateCarousel() {
-          carouselItems.forEach((item, index) => {
-            item.classList.remove('active', 'left', 'right');
-            if (index === activeIndex) {
-              item.classList.add('active');
-            } else if (index === (activeIndex - 1 + carouselItems.length) % carouselItems.length) {
-              item.classList.add('left');
-            } else if (index === (activeIndex + 1) % carouselItems.length) {
-              item.classList.add('right');
-            }
-          });
-        }
-    
-        function handleClick(event) {
-          const clickedIndex = [...carouselItems].indexOf(event.currentTarget);
-          if (clickedIndex !== activeIndex) {
-            activeIndex = clickedIndex;
-            updateCarousel();
-          }
-        }
-    
-        carouselItems.forEach(item => {
-          item.addEventListener('click', handleClick);
-        });
-    
-        updateCarousel();
-    </script>
    <script src="medora.js"></script>
 
 </body>
