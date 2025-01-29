@@ -21,7 +21,10 @@ header {
 }
 
 header .logo img {
-    height: 60px; /* Logo size */
+    height: 100px; /* حجم الشعار */
+    width: auto; /* الحفاظ على النسبة بين الطول والعرض */
+    display: block;
+    margin-left: 50px; /* مسافة من الحافة اليسرى */
 }
 
 nav {
@@ -445,9 +448,9 @@ h2 {
     }
 }
 
-        footer {
-
-    margin-top: 4px;
+        /* Footer */
+footer {
+    margin-top: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -456,6 +459,7 @@ h2 {
     flex-wrap: wrap;
     color: #0b3436;
     height: 200px; /* تقليل الارتفاع */
+    border-top: 2px solid #52837eec; /* إضافة خط أفقي في الأعلى */
 }
 
 .footer-left-1, .footer-center-1, .footer-right-1 {
@@ -503,9 +507,6 @@ h2 {
     color: #153d45;
     border-top: 0.0625em solid #ccc; /* 1px */
 }
-
-
-
 .profile-card {
     margin: 10px 20px; /* تقليل المسافة حول البطاقة */
     padding: 20px; /* تقليل الحشو داخل البطاقة */
