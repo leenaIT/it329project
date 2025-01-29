@@ -1,31 +1,26 @@
-// كاروسيل الخدمات
 (function servicesCarousel() {
   const carousel = document.querySelector(".services-carousel");
   const leftArrow = document.getElementById("leftArrow");
   const rightArrow = document.getElementById("rightArrow");
   const services = document.querySelectorAll(".service");
   const totalServices = services.length;
-  const visibleServices = 3; // عدد الخدمات الظاهرة
-  const serviceWidth = 100 / visibleServices; // عرض كل خدمة كنسبة مئوية
+  const visibleServices = 3; 
+  const serviceWidth = 100 / visibleServices; 
 
   let currentIndex = 0;
 
-  // تحديث الكاروسيل
   function updateServicesCarousel() {
-    const offset = -(currentIndex * serviceWidth); // احسب الترجمة
-    carousel.style.transform = `translateX(${offset}%)`; // طبق الترجمة
+    const offset = -(currentIndex * serviceWidth); 
+    carousel.style.transform = `translateX(${offset}%)`;  
 
-    // تفعيل/تعطيل الأسهم بناءً على الموضع الحالي
     leftArrow.disabled = currentIndex === 0;
     rightArrow.disabled = currentIndex >= totalServices - visibleServices;
 
-    // إظهار أو إخفاء الأسهم
     leftArrow.style.display = currentIndex === 0 ? "none" : "block";
     rightArrow.style.display =
       currentIndex + visibleServices >= totalServices ? "none" : "block";
   }
 
-  // عند الضغط على السهم الأيمن
   rightArrow.addEventListener("click", () => {
     if (currentIndex < totalServices - visibleServices) {
       currentIndex++;
@@ -33,7 +28,6 @@
     }
   });
 
-  // عند الضغط على السهم الأيسر
   leftArrow.addEventListener("click", () => {
     if (currentIndex > 0) {
       currentIndex--;
@@ -41,14 +35,12 @@
     }
   });
 
-  // تهيئة الكاروسيل
   updateServicesCarousel();
 })();
 
-// كاروسيل المراجعات المحدث
 (function reviewsCarousel() {
   const carouselItems = document.querySelectorAll(".carousel-item");
-  let activeIndex = 1; // Start with the second item as active
+  let activeIndex = 1; 
 
   function updateReviewsCarousel() {
     carouselItems.forEach((item, index) => {
