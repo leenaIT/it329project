@@ -9,89 +9,122 @@
             background-color: #abe1ce34;
         }
 
-        /* Header */
-        header {
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            color: white;
-        }
-        header .logo img {
-            height: 60px;
-        }
-        nav a {
-            color: #125250e6;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        nav a:hover {
-            color: #35D0A2;
-        }
+      /* Header */
+header {
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px; /* Increased padding for a more spacious feel */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+}
 
-        /* Hero Section */
-        .hero {
-            width: 100%;
-            height: 80vh;
-            background-image: url('iStock-1098297826.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            position: relative;
-            margin-top: 0px; /* Adjust for fixed header */
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 45%;
-            height: 100%;
-            background: #125250e6;
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            padding-left: 20px;
-            max-width: 600px;
-        }
-        .hero-content h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        .hero-content h1 span {
-            color: #35D0A2;
-        }
-        .hero-content p {
-            font-size: 1.2em;
-            margin: 15px 0;
-        }
-        .hero-content button {
-            padding: 12px 30px;
-            background-color: #35D0A2;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2em;
-            font-weight: 600;
-            border-radius: 5px;
-            transition: 0.3s ease;
-        }
-        .hero-content button:hover {
-            background-color: white;
-            color: #125250;
-        }
-        .services {
+header .logo img {
+    height: 60px; /* Logo size */
+}
+
+nav {
+    display: flex;
+    align-items: center; /* Align nav items vertically */
+}
+
+nav a {
+    color: #125250e6; /* White text for better visibility */
+    text-decoration: none;
+    margin: 0 20px; /* Increased margin for spacing */
+    font-weight: 600;
+    transition: color 0.3s ease, transform 0.3s ease; /* Added transform for hover effect */
+}
+
+nav a:hover {
+    color: #35D0A2; /* Highlight color on hover */
+    transform: scale(1.1); /* Slightly scale up on hover */
+}
+
+/* Responsive Design for Header */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack logo and nav on smaller screens */
+        align-items: flex-start; /* Align items to the left */
+        padding: 15px; /* Adjust padding */
+    }
+
+    nav {
+        margin-top: 10px; /* Add space between logo and nav */
+    }
+}
+
+   /* Hero Section */
+.hero {
+    width: 100%;
+    height: 100vh;
+    background-image: url('iStock-1098297826.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background: rgba(18, 82, 80, 0.7); /* Use rgba for transparency */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 20px; /* Add padding to ensure text doesn't touch edges */
+    max-width: 600px; /* Set a max width for better layout */
+    overflow: hidden; /* Prevent overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    display: flex;
+    flex-direction: column; /* Ensure all text stacks vertically */
+    justify-content: center; /* Center content vertically */
+    height: 100%; /* Make it fill the overlay */
+}
+
+.hero-content h1 {
+    font-size: 3.22em;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-content h1 span {
+    color: #35D0A2;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+.hero-content button {
+    padding: 12px 15px;
+    background-color: #35D0A2;
+    width: 100px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.hero-content button:hover {
+    background-color: white;
+    color: #125250;
+}
+.services {
     text-align: center;
     padding: 50px 0;
     background: #ffffff;
@@ -104,46 +137,51 @@
     font-weight: bold;
 }
 
+/* تحسين الحاوية الأساسية للكاروسيل */
 .services-carousel-container {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    max-width: 1100px;
-    margin: auto;
     overflow: hidden;
-}
-
-.services-carousel {
-    display: flex;
-    gap: 30px;
     width: 100%;
-    overflow-x: auto;
-    scroll-behavior: smooth;
     padding: 20px 0;
 }
 
+/* منع ظهور المساحة البيضاء */
+.services-carousel {
+    display: flex;
+    flex-wrap: nowrap; /* يمنع التفاف الصناديق */
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+    width: auto; /* تحديد العرض بناءً على عدد الصناديق */
+}
+
+/* تحسين مظهر الصناديق */
 .service {
     min-width: 320px;
-    max-width: 320px;
-    background: #abe1ce34;
+    max-width: 350px;
+    background: #f3f7f6;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* عند تمرير الماوس يظهر تأثير رفع الصندوق */
 .service:hover {
     transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* تحسين الصور داخل الصناديق */
 .service img {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 15px;
 }
 
+/* تحسين النصوص */
 .service h3 {
     font-size: 1.4em;
     color: #00796b;
@@ -157,41 +195,69 @@
     line-height: 1.5;
 }
 
-/* Arrows */
+/* تحسين الأسهم */
 .carousel-arrow {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 2em;
-    color: #125250;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    transition: color 0.3s ease;
+    background-color: rgba(0, 121, 107, 0.9);
+    border: none;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* عند تمرير الماوس على السهم */
 .carousel-arrow:hover {
-    color: #00796b;
+    background-color: #00796b;
+    transform: scale(1.1);
 }
 
+/* ضبط مواضع الأسهم */
 .left-arrow {
-    left: -40px;
+    left: 15px;
 }
 
 .right-arrow {
-    right: -40px;
+    right: 15px;
 }
 
-/* Responsive Design */
+/* تحسين مظهر الأيقونات داخل الأزرار */
+.carousel-arrow img {
+    width: 25px;
+    height: 25px;
+}
+
+/* تحسين توافق التصميم مع الشاشات الصغيرة */
 @media (max-width: 768px) {
-    .services-carousel {
-        overflow-x: scroll;
+    .services-carousel-container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .service {
+        min-width: 280px;
+        max-width: 90%;
     }
 
     .carousel-arrow {
-        display: none;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .carousel-arrow img {
+        width: 20px;
+        height: 20px;
     }
 }
+
 
 
         .testimonials {
@@ -229,11 +295,7 @@
     text-align: left;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-.about-us h2 {
-    font-size: 28px;
-    color: #125250;
-    margin-bottom: 20px;
-}
+
 .about-us blockquote {
     font-size: 18px;
     color: #658985;
@@ -243,18 +305,19 @@
     padding-left: 15px;
 }
 
-        .reviews {
+.reviews {
     position: relative;
-      width: 100%;
-      height: 300px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      overflow: visible;
+    width: 100%;
+    height: 400px; /* Keep this height or adjust as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide overflow */
+    white-space: nowrap; /* Prevents text wrapping */
+
 }
 
-#cli {
+h2 {
     font-size: 36px;
     margin-bottom: 20px;
     margin-top: 20px;
@@ -291,16 +354,19 @@
 }
 
 #Client1 p {
-    font-size: 15px;
+    font-size: 18px;
     font-style: italic;
     margin-top: 20px;
     color: #658985;
+   
 }
 
 .carousel-item {
     position: absolute;
-      width: 450px;
+      width: 600px;
       height: 250px;
+      max-width: 80%;
+
       opacity: 0.5;
       transform: scale(0.8);
       transition: all 0.5s ease;
@@ -313,7 +379,7 @@
 
   .carousel-item img {
     width: 70px;
-    height: 70px;
+    height: 90px;
     border-radius: 50%;
     position: absolute;
     top: -30px;
@@ -324,7 +390,7 @@
   .carousel-item h3 {
     font-family: "WondarQuason", sans-serif;
     margin: 10px 0 5px;
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-top: 30px;
     color: #53766a;
   }
@@ -367,7 +433,20 @@
     margin-right: 20px;
   }
 
+  @media (max-width: 768px) {
+    .carousel-item {
+        width: 90%;
+        max-width: 90%;
+    }
+
+    .carousel-item.left,
+    .carousel-item.right {
+        display: none;
+    }
+}
+
         footer {
+
     margin-top: 4px;
     display: flex;
     justify-content: space-between;
@@ -501,12 +580,13 @@
   margin: 0; /* إزالة الهوامش الافتراضية */
 }
 
-#sign-out {
+#sign-out  {
   text-decoration: underline; /* خط تحت النص */
   color: #4DA1A9; /* لون الرابط */
   cursor: pointer; /* تغيير شكل مؤشر الفأرة */
 }
 
-#sign-out:hover {
+#sign-out:hover  {
   color: #2f2f2f; /* لون مختلف عند التمرير */
 }
+

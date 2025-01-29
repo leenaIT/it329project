@@ -45,24 +45,35 @@
   updateServicesCarousel();
 })();
 
-// كاروسيل المراجعات
+// كاروسيل المراجعات المحدث
 (function reviewsCarousel() {
   const carouselItems = document.querySelectorAll(".carousel-item");
   let activeIndex = 1; // Start with the second item as active
 
   function updateReviewsCarousel() {
     carouselItems.forEach((item, index) => {
-      item.classList.remove("active", "left", "right");
+      item.classList.remove("active", "left", "right", "hidden");
+
       if (index === activeIndex) {
         item.classList.add("active");
-      } else if (
-        index === (activeIndex - 1 + carouselItems.length) % carouselItems.length
-      ) {
+      } else if (index === (activeIndex - 1 + carouselItems.length) % carouselItems.length) {
         item.classList.add("left");
       } else if (index === (activeIndex + 1) % carouselItems.length) {
         item.classList.add("right");
+      } else {
+        item.classList.add("hidden");
       }
     });
+  }
+
+  function nextReview() {
+    activeIndex = (activeIndex + 1) % carouselItems.length;
+    updateReviewsCarousel();
+  }
+
+  function prevReview() {
+    activeIndex = (activeIndex - 1 + carouselItems.length) % carouselItems.length;
+    updateReviewsCarousel();
   }
 
   function handleClick(event) {
@@ -73,8 +84,14 @@
     }
   }
 
+  // Auto-scroll every 5 seconds
+  let autoScroll = setInterval(nextReview, 2000);
+
+  // Pause auto-scroll on hover
   carouselItems.forEach((item) => {
     item.addEventListener("click", handleClick);
+    item.addEventListener("mouseover", () => clearInterval(autoScroll));
+    item.addEventListener("mouseleave", () => autoScroll = setInterval(nextReview, 5000));
   });
 
   updateReviewsCarousel();
