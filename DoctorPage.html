@@ -10,142 +10,139 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
 
-        /* Welcome Section */
-        .welcome {
-            margin: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            animation: slideIn 0.8s ease-in-out;
-        }
+.welcome {
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.8s ease-in-out;
+}
 
-        .welcome h2 {
-            font-family: 'Playfair Display', serif;
-            color: #000;
-        }
+.welcome h2 {
+    font-family: 'Playfair Display', serif;
+    color: #000;
+}
 
-        .welcome a {
-            text-decoration: none;
-            color: #BAD8B6;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
+.welcome a {
+    text-decoration: none;
+    color: #BAD8B6;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
 
-        .welcome a:hover {
-            text-decoration: underline;
-            color: #2A7D84;
-        }
+.welcome a:hover {
+    text-decoration: underline;
+    color: #2A7D84;
+}
 
  
 
-        /* Container Styling */
         .container {
     padding: 15px;
     width: 90%;
     max-width: 1200px;
     margin: auto;
-    margin-top: -10px; /* رفع الجداول أقرب إلى البطاقة */
+    margin-top: -10px; 
     animation: fadeInUp 1s ease-in-out;
 }
 
 .section {
     background-color: #ffffff;
-    border-radius: 8px; /* تقليل انحناء الزوايا */
-    padding: 15px; /* تقليل الحشو داخل الأقسام */
-    margin-bottom: 20px; /* تقليل المسافة بين الأقسام */
+    border-radius: 8px; 
+    padding: 15px; 
+    margin-bottom: 20px; 
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4em;
-    color: #333;
-    border-bottom: 2px solid #4DA1A9;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-        /* Table Styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            background-color: #fff;
-            text-align: center;
-        }
+.section h2 {
+font-family: 'Playfair Display', serif;
+font-size: 1.4em;
+color: #333;
+border-bottom: 2px solid #4DA1A9;
+padding-bottom: 8px;
+margin-bottom: 12px;
+}
 
-        table th, table td {
-            border: 1px solid #e0e0e0;
-            padding: 15px;
-        }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #fff;
+    text-align: center;
+}
 
-        table th {
-            background: linear-gradient(135deg, #4da1a9, #7cc7cb);
-            color: white;
-            text-transform: uppercase;
-        }
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+}
 
-        table tbody tr:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
+table th {
+    background: linear-gradient(135deg, #4da1a9, #7cc7cb);
+    color: white;
+    text-transform: uppercase;
+}
 
-        table tbody tr:nth-child(even) {
-            background-color: #fffef5;
-        }
+table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
 
-        table tbody tr:hover {
-            background-color: #eef7fa;
-            transition: background-color 0.3s ease;
-        }
+table tbody tr:nth-child(even) {
+    background-color: #fffef5;
+}
 
-       
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
+table tbody tr:hover {
+    background-color: #eef7fa;
+    transition: background-color 0.3s ease;
+}
 
 
-            table {
-                font-size: 0.9em;
-            }
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
-            .btn {
-                padding: 10px 20px;
-            }
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+    table {
+        font-size: 0.9em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
         
     </style>
 </head>
