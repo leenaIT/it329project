@@ -5,102 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prescribe Medication</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-  
+  <link rel="stylesheet" href="newstyle2.css">
+
   <style>
-    body {
-      margin: 0;
-      font-family: "Times New Roman", Times, serif;
-      background-color: #ffffff;
-    }
 
 
-    header {
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 50px; /* Increased padding for a more spacious feel */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
-}
 
-header .logo img {
-    height: 100px; /* حجم الشعار */
-    width: auto; /* الحفاظ على النسبة بين الطول والعرض */
-    display: block;
-    margin-left: 50px; /* مسافة من الحافة اليسرى */
-}
-
-nav {
-    display: flex;
-    align-items: center; /* Align nav items vertically */
-}
-
-nav a {
-    color: #125250e6; /* White text for better visibility */
-    text-decoration: none;
-    margin: 0 20px; /* Increased margin for spacing */
-    font-weight: 600;
-    transition: color 0.3s ease, transform 0.3s ease; /* Added transform for hover effect */
-}
-
-nav a:hover {
-    color: #35D0A2; /* Highlight color on hover */
-    transform: scale(1.1); /* Slightly scale up on hover */
-}
-
-/* Responsive Design for Header */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column; /* Stack logo and nav on smaller screens */
-        align-items: flex-start; /* Align items to the left */
-        padding: 15px; /* Adjust padding */
-    }
-
-    nav {
-        margin-top: 10px; /* Add space between logo and nav */
-    }
-}
-
-
-    
- 
-   
 .background {
-    background: url('background.jpg') no-repeat center center/cover;  /* Add your background image */
-    min-height: calc(100vh - 120px); /* Adjusted height to account for header and footer */
+    background: url('background.jpg') no-repeat center center/cover;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  
-
+    padding: 20px;
+}
   
 
+.form-container1 {
+    background-color: rgba(255, 255, 255, 0.95); /* Slight transparency */
+    width: 500px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    animation: fadeIn 1s ease-in-out; /* Form Fade-in Animation */
 
-    .form-container1 {
-      background-color: #ffffff;
-      width: 500px;
-      height: 610px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      border-radius: 15px;
-      padding-left: 20px;
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
 
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
     .form-container1 h3 {
       color: #125250;
       font-size: 20px;
       margin-bottom: 20px;
     }
-
     .form-container1 h1 {
-      color: #125250;
-      font-size: 30px;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+    color: #125250;
+    font-size: 26px;
+    text-align: center;
+    font-weight: bold;
+}
 
     .form-group1 {
       margin-bottom: 20px;
@@ -108,11 +76,12 @@ nav a:hover {
     }
 
     .form-container1 label {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 5px;
-      color: #555;
-    }
+    display: block;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
 
     .form-group1 label {
       margin-left: 10px;
@@ -133,32 +102,30 @@ nav a:hover {
   }
 
 
-  .form-container1 input[type="text"], .form-container1 select, .form-container1 input[type="number"] {
-      width: 90%;
-      padding: 10px;
-      font-size: 14px;
-      border: 1px solid #ffffff;
-      border-radius: 5px;
-      background-color: #ffffff;
-      font-family: "Times New Roman", Times, serif;
-    }
+  .form-container1 input[type="text"], 
+.form-container1 input[type="number"], 
+.form-container1 select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+/* Focus effect */
+.form-container1 input:focus {
+    border: 2px solid #52837e;
+    outline: none;
+    background-color: #fff;
+}
+  /* Radio and Checkbox styling */
+.form-container1 input[type="radio"],
+.form-container1 input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 8px;
+}
 
-    .form-container1 input[type="text"]:focus, 
-    .form-container1 input[type="number"]:focus, 
-    .form-container1 select:focus {
-    border: 2px solid #52837e; 
-    outline: none; 
-  }
-
-  .form-container1 input[type="radio"] {
-      margin-right: 10px;
-      accent-color: #52837e;
-    }
-
-    .form-container1 input[type="checkbox"] {
-      margin-right: 10px;
-      accent-color: #52837e;
-    }
 
     
 
@@ -184,9 +151,9 @@ nav a:hover {
       font-size: 16px;
       cursor: pointer;
       position: absolute;
-      margin-left: 380px;
+      margin-left: 340px;
       width: 100px;
-      margin-top: 10px;
+      margin-top: -50px;
       font-family: "Times New Roman", Times, serif;
     }
 
@@ -195,76 +162,18 @@ nav a:hover {
     }
 
     
-        /* Footer */
-footer {
-    margin-top: 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0; /* إزالة الحشو */
-    position: relative;
-    flex-wrap: wrap;
-    color: #0b3436;
-    height: 200px; /* تقليل الارتفاع */
-    border-top: 2px solid #52837eec; /* إضافة خط أفقي في الأعلى */
-}
-
-.footer-left-1, .footer-center-1, .footer-right-1 {
-    flex: 1;
-    padding: 0.5em; /* تقليل الحشو الداخلي */
-    text-align: center;
-}
-
-.footer-center-1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-logo-1 {
-    width: 100px; /* تقليل حجم الشعار */
-}
-
-.contact-info-1 {
-    display: flex;
-    gap: 10px; /* تقليل الفجوة بين العناصر */
-    align-items: center;
-}
-
-.footer-left-1 img, .footer-right-1 img, .social-icon-1 {
-    max-width: 1.5em; /* تقليل الحجم */
-    height: auto;
-    margin-right: 0.5em; /* تقليل المسافة اليمنى */
-}
-
-.single-line-1 {
-    white-space: nowrap;
-}
-
-.footer-bottom-1 {
-    width: 100%;
-    text-align: center;
-    margin-top: 0.5em; /* تقليل المسافة العلوية */
-}
-
-.footer-bottom-1 p {
-    padding: 0.5em; /* تقليل الحشو */
-    background-color: #ffffff;
-    font-size: 0.75em; /* تقليل حجم الخط */
-    color: #153d45;
-    border-top: 0.0625em solid #ccc; /* 1px */
-}
-
+      
   </style>
 </head>
 <body>
 
-  
   <header>
-    <div class="logo"><img src="logo.png" alt="Clinic Logo"></div>
+    <div class="logo">
+        <img src="logo.png" alt="Medora Logo">
+    </div>
     <nav>
-        <a href="#about-us">About Us</a>
-        <a href="#contact-us">Contact Us</a>
+        <a href="HomePage2.html">Home</a>
+        <a href="#contact">Contact</a>
     </nav>
 </header>
 <div class="background">
@@ -311,11 +220,11 @@ footer {
         <div class="long-divider1"></div>
 
 
-        <button onclick="window.location.href='DectorPage.html'" type="submit" class="submit-btn1">Submit</button>
+        <button type="button" onclick="window.location.href='DoctorPage.html'" class="submit-btn1">Submit</button>
+
       </form>
     </div>
   </div>
-
   <footer>
     <div class="footer-left-1">
         <h4>Get In Touch</h4>
@@ -334,24 +243,20 @@ footer {
             </div>
         </div>
     </div>
-    
     <div class="footer-center-1">
         <a href="index.html">
-        <img src="logo.png" alt="Logo" class="footer-logo-1 logo-toggle">
-    </a>
+            <img src="logo.png" alt="Logo" class="footer-logo-1 logo-toggle">
+        </a>
     </div>
-    
     <div class="footer-right-1">
         <p><strong>Social media</strong></p>
         <div class="social-icons-1">
-            
             <img src="facebook1.png" alt="Facebook">
             <img src="X1.png" alt="Twitter">
             <img src="instagram1.png" alt="Instagram">
             <img src="linkedin1.png" alt="LinkedIn">
         </div>
     </div>
-    
     <div class="footer-bottom-1">
         <p>© 2024 Website. All rights reserved.</p>
     </div>
