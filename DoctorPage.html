@@ -283,11 +283,9 @@ table tbody tr:hover {
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    // Sort the "Upcoming Appointments" table by date and time
     const appointmentsTableBody = document.querySelector(".container .section:first-of-type table tbody");
     const appointmentsRows = Array.from(appointmentsTableBody.rows);
 
-    // Function to parse date and time for sorting
     const parseDateTime = (date, time) => {
         const [day, month, year] = date.split('/').map(Number);
         const [hour, minute] = time.match(/\d+/g).map(Number);
@@ -296,39 +294,33 @@ table tbody tr:hover {
         return new Date(year, month - 1, day, adjustedHour, minute || 0);
     };
 
-    // Sort rows by date and time
     appointmentsRows.sort((rowA, rowB) => {
         const dateA = parseDateTime(rowA.cells[0].textContent, rowA.cells[1].textContent);
         const dateB = parseDateTime(rowB.cells[0].textContent, rowB.cells[1].textContent);
         return dateA - dateB;
     });
 
-    // Append the sorted rows back to the table body
     appointmentsRows.forEach(row => appointmentsTableBody.appendChild(row));
 
-    // Add functionality for "Confirm" buttons
     const confirmButtons = document.querySelectorAll(".btn");
 
     confirmButtons.forEach(button => {
         button.addEventListener("click", () => {
-            // Update the status cell to "Confirmed"
             const statusCell = button.parentElement;
             statusCell.textContent = "Confirmed";
-            statusCell.style.color = "green"; // Optional: make the text green for visual feedback
+            statusCell.style.color = "green"; 
         });
     });
 
-    // Sort the "Doctor's Patients" table alphabetically by patient name
     const patientsTableBody = document.querySelector(".container .section:last-of-type table tbody");
     const patientsRows = Array.from(patientsTableBody.rows);
 
     patientsRows.sort((rowA, rowB) => {
-        const nameA = rowA.cells[0].textContent.toLowerCase(); // Get the name from the first cell
+        const nameA = rowA.cells[0].textContent.toLowerCase(); 
         const nameB = rowB.cells[0].textContent.toLowerCase();
-        return nameA.localeCompare(nameB); // Alphabetical order
+        return nameA.localeCompare(nameB); 
     });
 
-    // Append the sorted rows back to the table body
     patientsRows.forEach(row => patientsTableBody.appendChild(row));
 });
 

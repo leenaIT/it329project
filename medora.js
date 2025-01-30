@@ -76,10 +76,8 @@
     }
   }
 
-  // Auto-scroll every 5 seconds
   let autoScroll = setInterval(nextReview, 2000);
 
-  // Pause auto-scroll on hover
   carouselItems.forEach((item) => {
     item.addEventListener("click", handleClick);
     item.addEventListener("mouseover", () => clearInterval(autoScroll));
