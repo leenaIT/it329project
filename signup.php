@@ -132,7 +132,7 @@
                         <input type="date" placeholder="Date of Birth" required>
                         <input type="email" placeholder="Email Address" required>
                         <input type="password" placeholder="Password" required>
-                        <button type="submit"onclick="handleSubmit(event); return false;" >Sign Up</button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
                   <!-- Doctor Form -->
@@ -151,7 +151,7 @@
                         </select>
                         <input type="email" placeholder="Email Address" required>
                         <input type="password" placeholder="Password" required>
-                        <button type="submit" onclick="handleSubmit(event); return false;">Sign Up</button>
+                        <button type="submit">Sign Up</button>
                     </form>
                 </div>
               </div>

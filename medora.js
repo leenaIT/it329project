@@ -99,6 +99,7 @@ function showForm() {
       document.getElementById('doctorForm').classList.remove('hidden');
   }
 }
+//delet function handleSubmit php do that
 function handleSubmit(event) {
   event.preventDefault(); 
   const selectedRole = document.querySelector('input[name="role"]:checked');
