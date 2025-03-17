@@ -9,13 +9,13 @@
 <body>
     <?php
     // تعديل هذه المتغيرات حسب الإعدادات لديك
-    Shost = "localhost";
-    Sdatabase = "medora";
-    Suser = "root";
-    Spass = "root";
+    $host = "localhost";
+    $database = "medora";
+    $user = "root";
+    $pass = "root";
     
     // إنشاء اتصال بقاعدة البيانات
-    Sconnection = mysqli_connect(Shost, Suser, Spass, Sdatabase);
+    $connection = mysqli_connect($host, $user, $pass, $database);
     
     if (!$Sconnection) {
         die("Connection failed: " . mysqli_connect_error());
