@@ -112,6 +112,6 @@ function handleSubmit(event) {
   if (selectedRole.value === "doctor") {
     window.location.href = "DoctorPage.html"; 
   } else if (selectedRole.value === "patient") {
-    window.location.href = "Patient.php"; 
+    window.location.href = "Patient.html"; 
   }
 }
