@@ -8,17 +8,10 @@
 </head>
 <body>
 <?php
-// الاتصال بقاعدة البيانات
-$Shost = "localhost";
-$Sdatabase = "medora";
-$Suser = "root";
-$Spass = "root";
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-$Sconnection = mysqli_connect($Shost, $Suser, $Spass, $Sdatabase);
-
-if (!$Sconnection) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+require 'database.php'; // Include the database connection
 
 session_start();
 
@@ -31,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // التحقق مما إذا كان البريد الإلكتروني مستخدمًا بالفعل
     $checkEmailQuery = "SELECT id FROM $role WHERE emailAddress = ?";
-    $stmt = mysqli_prepare($Sconnection, $checkEmailQuery);
+    $stmt = mysqli_prepare($connection, $checkEmailQuery);
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
@@ -48,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $query = "INSERT INTO patient (firstName, lastName, Gender, DoB, emailAddress, password) 
                   VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($Sconnection, $query);
+        $stmt = mysqli_prepare($connection, $query);
         mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $gender, $dob, $email, $password);
     } elseif ($role === "doctor") {
         $specialityID = $_POST['SpecialityID'];
@@ -59,28 +52,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $query = "INSERT INTO doctor (firstName, lastName, photo, SpecialityID, emailAddress, password) 
                   VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($Sconnection, $query);
+        $stmt = mysqli_prepare($connection, $query);
         mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $uniqueFileName, $specialityID, $email, $password);
     }
 
     if (mysqli_stmt_execute($stmt)) {
-        $_SESSION['user_id'] = mysqli_insert_id($Sconnection);
+        $_SESSION['user_id'] = mysqli_insert_id($connection);
         $_SESSION['user_type'] = $role;
 
         if ($role === "doctor") {
-            header("Location: doctor_homepage.php");
+            header("Location: doctorhomepage.php");
         } else {
-            header("Location: patient_homepage.php");
+            header("Location: patient.php");
         }
         exit();
     } else {
-        echo "Error: " . mysqli_error($Sconnection);
+        echo "Error: " . mysqli_error($connection);
     }
 
     mysqli_stmt_close($stmt);
 }
+mysqli_close($connection);
 
-mysqli_close($Sconnection);
 ?>
 
 
