@@ -69,9 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($role === "doctor") {
             /* leena write your php page*/
-            header("Location: doctor.php");
+            header("Location: login.php");
         } else {
-            header("Location: patient.php");
+            header("Location: login.php");
         }
         exit();
     } else {
