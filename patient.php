@@ -3,13 +3,11 @@ ini_set('display_errors', 1);
 session_start();
 require 'database.php'; // Include the database connection
 
-
-
 // Get the logged-in patient's ID
-$patientID = $_SESSION['patient_id'];
+$patientID = $_POST['id'];
 
 // Fetch patient details from the database
-$sql = "SELECT full_name, dob, email FROM patients WHERE id = ?";
+$sql = "SELECT firstName, lastName, gender, dob, email AS emailAddress, password FROM patients WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $patientID);
 $stmt->execute();
@@ -21,9 +19,14 @@ if (!$patient) {
 }
 
 // Assign patient details
-$patientName = $patient['full_name'];
+$patientFirstName = $patient['firstName'];
+$patientLastName = $patient['lastName'];
+$patientGender = $patient['gender'];
 $patientDOB = $patient['dob'];
-$patientEmail = $patient['email'];
+$patientEmail = $patient['emailAddress'];
+
+// Full name (combination of first and last name)
+$patientFullName = $patientFirstName . " " . $patientLastName;
 
 // Fetch appointments for the patient
 $sql = "SELECT id, date, time, doctor_name, doctor_photo, status FROM appointments WHERE patient_id = ?";
@@ -44,7 +47,7 @@ $appointments = $result->fetch_all(MYSQLI_ASSOC);
 <body>
     <!-- Welcome Section -->
     <div class="welcome">
-        <h2>Welcome, <?php echo htmlspecialchars($patientName); ?>!</h2>
+        <h2>Welcome, <?php echo htmlspecialchars($patientFullName); ?>!</h2>
         <a href="logout.php" id="sign-out" style="font-weight: bold;">Sign Out</a>
     </div>
 
@@ -54,7 +57,8 @@ $appointments = $result->fetch_all(MYSQLI_ASSOC);
             <img class="profile-image" src="icon.jpg" alt="Patient Icon">
             <div class="profile-details">
                 <p><strong>ID:</strong> <span><?php echo htmlspecialchars($patientID); ?></span></p>
-                <p><strong>Full Name:</strong> <span><?php echo htmlspecialchars($patientName); ?></span></p>
+                <p><strong>Full Name:</strong> <span><?php echo htmlspecialchars($patientFullName); ?></span></p>
+                <p><strong>Gender:</strong> <span><?php echo htmlspecialchars($patientGender); ?></span></p>
                 <p><strong>DOB:</strong> <span><?php echo htmlspecialchars($patientDOB); ?></span></p>
                 <p><strong>Email:</strong> <span><?php echo htmlspecialchars($patientEmail); ?></span></p>
             </div>
@@ -108,24 +112,20 @@ $appointments = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     </div>
 
-  
-   <script>
-   
-   function confirmCancellation() {
+    <script>
+        function confirmCancellation() {
             return confirm("Are you sure you want to cancel this appointment?");
         }
         
-  function showServices() {
-    document.getElementById('doctors-slideshow').parentElement.style.display = 'none';
-    document.getElementById('services-section').style.display = 'block';
-}
+        function showServices() {
+            document.getElementById('doctors-slideshow').parentElement.style.display = 'none';
+            document.getElementById('services-section').style.display = 'block';
+        }
 
-function showDoctors() {
-    document.getElementById('services-section').style.display = 'none';
-    document.getElementById('doctors-slideshow').parentElement.style.display = 'block';
-}
-
-
-   </script>
+        function showDoctors() {
+            document.getElementById('services-section').style.display = 'none';
+            document.getElementById('doctors-slideshow').parentElement.style.display = 'block';
+        }
+    </script>
 </body>
 </html>

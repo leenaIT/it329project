@@ -8,10 +8,17 @@
 </head>
 <body>
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// الاتصال بقاعدة البيانات
+$Shost = "localhost";
+$Sdatabase = "medora";
+$Suser = "root";
+$Spass = "root";
 
-require 'database.php'; // Include the database connection
+$Sconnection = mysqli_connect($Shost, $Suser, $Spass, $Sdatabase,8889);
+
+if (!$Sconnection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 session_start();
 
@@ -24,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // التحقق مما إذا كان البريد الإلكتروني مستخدمًا بالفعل
     $checkEmailQuery = "SELECT id FROM $role WHERE emailAddress = ?";
-    $stmt = mysqli_prepare($connection, $checkEmailQuery);
+    $stmt = mysqli_prepare($Sconnection, $checkEmailQuery);
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
@@ -41,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $query = "INSERT INTO patient (firstName, lastName, Gender, DoB, emailAddress, password) 
                   VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($connection, $query);
+        $stmt = mysqli_prepare($Sconnection, $query);
         mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $gender, $dob, $email, $password);
     } elseif ($role === "doctor") {
         $specialityID = $_POST['SpecialityID'];
@@ -52,28 +59,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $query = "INSERT INTO doctor (firstName, lastName, photo, SpecialityID, emailAddress, password) 
                   VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($connection, $query);
+        $stmt = mysqli_prepare($Sconnection, $query);
         mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $uniqueFileName, $specialityID, $email, $password);
     }
 
     if (mysqli_stmt_execute($stmt)) {
-        $_SESSION['user_id'] = mysqli_insert_id($connection);
+        $_SESSION['user_id'] = mysqli_insert_id($Sconnection);
         $_SESSION['user_type'] = $role;
 
         if ($role === "doctor") {
+            /* leena write your php page*/
             header("Location: login.php");
         } else {
             header("Location: login.php");
         }
         exit();
     } else {
-        echo "Error: " . mysqli_error($connection);
+        echo "Error: " . mysqli_error($Sconnection);
     }
 
     mysqli_stmt_close($stmt);
 }
-mysqli_close($connection);
 
+mysqli_close($Sconnection);
 ?>
 
 
@@ -85,7 +93,6 @@ mysqli_close($connection);
         <a href="#contact-us">Contact Us</a>
       </nav>
   </header>
-
      <!-- Main Content Section with Background -->
      <div class="background">
       <div class="box">
@@ -98,7 +105,7 @@ mysqli_close($connection);
                 <input type="radio" id="doctor" name="role" value="doctor" onclick="showForm()">
                 <label for="doctor">Doctor</label>
             </div>
-
+              
               <div class="form-container">
                   <!-- Patient Form -->
 <div id="patientForm" class="hidden">
@@ -187,7 +194,22 @@ mysqli_close($connection);
       </div>
   </footer>
 
-  <script src="medora.js"></script>
+  <script>
+function showForm() {
+  const selectedRole = document.querySelector('input[name="role"]:checked').value;
+
+  document.getElementById('patientForm').classList.add('hidden');
+  document.getElementById('doctorForm').classList.add('hidden');
+  
+  if (selectedRole === 'patient') {
+      document.getElementById('patientForm').classList.remove('hidden');
+  } else if (selectedRole === 'doctor') {
+      document.getElementById('doctorForm').classList.remove('hidden');
+  }
+}
+
+
+</script>
 
 </body>
 </html>
