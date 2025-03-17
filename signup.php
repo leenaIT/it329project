@@ -61,9 +61,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_type'] = $role;
 
         if ($role === "doctor") {
-            header("Location: doctorhomepage.php");
+            header("Location: login.php");
         } else {
-            header("Location: patient.php");
+            header("Location: login.php");
         }
         exit();
     } else {

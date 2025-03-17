@@ -3,11 +3,7 @@ ini_set('display_errors', 1);
 session_start();
 require 'database.php'; // Include the database connection
 
-// Check if the user is logged in
-if (!isset($_SESSION['patient_id'])) {
-    header("Location: login.php"); // Redirect to login page if not logged in
-    exit();
-}
+
 
 // Get the logged-in patient's ID
 $patientID = $_SESSION['patient_id'];
