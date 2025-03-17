@@ -14,7 +14,7 @@ $Sdatabase = "medora";
 $Suser = "root";
 $Spass = "root";
 
-$Sconnection = mysqli_connect($Shost, $Suser, $Spass, $Sdatabase);
+$Sconnection = mysqli_connect($Shost, $Suser, $Spass, $Sdatabase,8889);
 
 if (!$Sconnection) {
     die("Connection failed: " . mysqli_connect_error());
@@ -68,9 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_type'] = $role;
 
         if ($role === "doctor") {
-            header("Location: doctor_homepage.php");
+            /* leena write your php page*/
+            header("Location: doctor.php");
         } else {
-            header("Location: patient_homepage.php");
+            header("Location: patient.php");
         }
         exit();
     } else {
@@ -92,7 +93,6 @@ mysqli_close($Sconnection);
         <a href="#contact-us">Contact Us</a>
       </nav>
   </header>
-
      <!-- Main Content Section with Background -->
      <div class="background">
       <div class="box">
@@ -105,7 +105,7 @@ mysqli_close($Sconnection);
                 <input type="radio" id="doctor" name="role" value="doctor" onclick="showForm()">
                 <label for="doctor">Doctor</label>
             </div>
-
+              
               <div class="form-container">
                   <!-- Patient Form -->
 <div id="patientForm" class="hidden">
@@ -194,7 +194,22 @@ mysqli_close($Sconnection);
       </div>
   </footer>
 
-  <script src="medora.js"></script>
+  <script>
+function showForm() {
+  const selectedRole = document.querySelector('input[name="role"]:checked').value;
+
+  document.getElementById('patientForm').classList.add('hidden');
+  document.getElementById('doctorForm').classList.add('hidden');
+  
+  if (selectedRole === 'patient') {
+      document.getElementById('patientForm').classList.remove('hidden');
+  } else if (selectedRole === 'doctor') {
+      document.getElementById('doctorForm').classList.remove('hidden');
+  }
+}
+
+
+</script>
 
 </body>
 </html>
