@@ -8,30 +8,33 @@
 </head>
 <body>
 <?php
-// الاتصال بقاعدة البيانات
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 $Shost = "localhost";
 $Sdatabase = "medora";
 $Suser = "root";
 $Spass = "root";
 
-$Sconnection = mysqli_connect($Shost, $Suser, $Spass, $Sdatabase,8889);
+// إنشاء اتصال بقاعدة البيانات
+$connection = mysqli_connect($Shost, $Suser, $Spass, $Sdatabase, 8889);
 
-if (!$Sconnection) {
+if (!$connection) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
-session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST['role'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $email = $_POST['emailAddress'];
+    $gender = $_POST['Gender'];
+    $ID = $_POST['ID'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     // التحقق مما إذا كان البريد الإلكتروني مستخدمًا بالفعل
     $checkEmailQuery = "SELECT id FROM $role WHERE emailAddress = ?";
-    $stmt = mysqli_prepare($Sconnection, $checkEmailQuery);
+    $stmt = mysqli_prepare($connection, $checkEmailQuery);
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
@@ -43,45 +46,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_close($stmt);
 
     if ($role === "patient") {
-        $gender = $_POST['Gender'];
         $dob = $_POST['DoB'];
 
-        $query = "INSERT INTO patient (firstName, lastName, Gender, DoB, emailAddress, password) 
-                  VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($Sconnection, $query);
-        mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $gender, $dob, $email, $password);
+        $query = "INSERT INTO patient (firstName, lastName, pid, Gender, DoB, emailAddress, password) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($stmt, "sssssss", $firstName, $lastName, $ID, $gender, $dob, $email, $password);
     } elseif ($role === "doctor") {
-        $specialityID = $_POST['SpecialityID'];
+$specialityID = isset($_POST['SpecialityID']) ? (int) $_POST['SpecialityID'] : 0;
         $uniqueFileName = uniqid() . "_" . basename($_FILES["photo"]["name"]);
-        $targetDir = "uploads/";
-        $targetFilePath = $targetDir . $uniqueFileName;
-        move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath);
+$targetDir = "uploads/";
+$targetFilePath = $targetDir . $uniqueFileName;
 
-        $query = "INSERT INTO doctor (firstName, lastName, photo, SpecialityID, emailAddress, password) 
-                  VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($Sconnection, $query);
-        mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $uniqueFileName, $specialityID, $email, $password);
-    }
+// التحقق من وجود المجلد وإنشائه إذا لم يكن موجودًا
+if (!is_dir($targetDir)) {
+    mkdir($targetDir, 0777, true);
+}
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath);
+        $query = "INSERT INTO doctor (firstName, lastName, did, uniqueFileName, SpecialityID, emailAddress, password, Gender) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = mysqli_prepare($connection, $query);
+        mysqli_stmt_bind_param($stmt, "ssssisss", $firstName, $lastName, $ID, $uniqueFileName, $specialityID, $email, $password, $gender);
+ }
 
     if (mysqli_stmt_execute($stmt)) {
-        $_SESSION['user_id'] = mysqli_insert_id($Sconnection);
+        $_SESSION['user_id'] = mysqli_insert_id($connection);
         $_SESSION['user_type'] = $role;
 
         if ($role === "doctor") {
-            /* leena write your php page*/
             header("Location: login.php");
         } else {
             header("Location: login.php");
         }
         exit();
     } else {
-        echo "Error: " . mysqli_error($Sconnection);
+        echo "Error: " . mysqli_error($connection);
     }
 
     mysqli_stmt_close($stmt);
 }
+mysqli_close($connection);
 
-mysqli_close($Sconnection);
 ?>
 
 
@@ -93,6 +99,7 @@ mysqli_close($Sconnection);
         <a href="#contact-us">Contact Us</a>
       </nav>
   </header>
+
      <!-- Main Content Section with Background -->
      <div class="background">
       <div class="box">
@@ -105,7 +112,7 @@ mysqli_close($Sconnection);
                 <input type="radio" id="doctor" name="role" value="doctor" onclick="showForm()">
                 <label for="doctor">Doctor</label>
             </div>
-              
+
               <div class="form-container">
                   <!-- Patient Form -->
 <div id="patientForm" class="hidden">
@@ -133,13 +140,18 @@ mysqli_close($Sconnection);
         <input type="text" name="firstName" placeholder="First Name" required>
         <input type="text" name="lastName" placeholder="Last Name" required>
         <input type="text" name="ID" placeholder="ID" required>
+        <select name="Gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
         <input type="file" name="photo" required>
         <select name="SpecialityID" required>
             <option value="">Select Speciality</option>
-            <option value="Neurological_Specialist">Neurological Specialist</option>
-            <option value="Sports_Rehabilitation_Specialist">Sports Rehabilitation Specialist</option>
-            <option value="Pediatric_Physical_Therapist">Pediatric Physical Therapist</option>
-            <option value="Geriatric_Specialist">Geriatric Specialist</option>
+            <option value="1">Neurological Specialist</option>
+            <option value="2">Sports Rehabilitation Specialist</option>
+            <option value="3">Pediatric Physical Therapist</option>
+            <option value="4">Geriatric Specialist</option>
         </select>
         <input type="email" name="emailAddress" placeholder="Email Address" required>
         <input type="password" name="password" placeholder="Password" required>
@@ -195,12 +207,12 @@ mysqli_close($Sconnection);
   </footer>
 
   <script>
-function showForm() {
+  function showForm() {
   const selectedRole = document.querySelector('input[name="role"]:checked').value;
 
   document.getElementById('patientForm').classList.add('hidden');
   document.getElementById('doctorForm').classList.add('hidden');
-  
+
   if (selectedRole === 'patient') {
       document.getElementById('patientForm').classList.remove('hidden');
   } else if (selectedRole === 'doctor') {
@@ -208,8 +220,7 @@ function showForm() {
   }
 }
 
-
-</script>
+  </script>
 
 </body>
 </html>

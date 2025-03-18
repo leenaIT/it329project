@@ -109,6 +109,7 @@ mysqli_close($Sconnection);
       </div>
 
     </div>
+
     <footer>
       <div class="footer-left-1">
           <h4>Get In Touch</h4>
@@ -150,21 +151,7 @@ mysqli_close($Sconnection);
       </div>
   </footer>
 
-  <script>
-      function showForm() {
-  const selectedRole = document.querySelector('input[name="role"]:checked').value;
-
-  document.getElementById('patientForm').classList.add('hidden');
-  document.getElementById('doctorForm').classList.add('hidden');
-
-  if (selectedRole === 'patient') {
-      document.getElementById('patientForm').classList.remove('hidden');
-  } else if (selectedRole === 'doctor') {
-      document.getElementById('doctorForm').classList.remove('hidden');
-  }
-}
-
-</script>
+  <script src="medora.js"></script>
 
 </body>
 </html>
