@@ -53,17 +53,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = mysqli_prepare($connection, $query);
         mysqli_stmt_bind_param($stmt, "sssssss", $firstName, $lastName, $ID, $gender, $dob, $email, $password);
     } elseif ($role === "doctor") {
-        $specialityID = $_POST['SpecialityID'];
+$specialityID = isset($_POST['SpecialityID']) ? (int) $_POST['SpecialityID'] : 0;
         $uniqueFileName = uniqid() . "_" . basename($_FILES["photo"]["name"]);
-        $targetDir = "uploads/";
-        $targetFilePath = $targetDir . $uniqueFileName;
-        move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath);
+$targetDir = "uploads/";
+$targetFilePath = $targetDir . $uniqueFileName;
 
-        $query = "INSERT INTO doctor (firstName, lastName, did, photo, SpecialityID, emailAddress, password, Gender) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+// التحقق من وجود المجلد وإنشائه إذا لم يكن موجودًا
+if (!is_dir($targetDir)) {
+    mkdir($targetDir, 0777, true);
+}
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath);
+        $query = "INSERT INTO doctor (firstName, lastName, did, uniqueFileName, SpecialityID, emailAddress, password, Gender) 
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
         $stmt = mysqli_prepare($connection, $query);
-        mysqli_stmt_bind_param($stmt, "ssssssss", $firstName, $lastName, $ID, $uniqueFileName, $specialityID, $email, $password, $gender);
-    }
+        mysqli_stmt_bind_param($stmt, "ssssisss", $firstName, $lastName, $ID, $uniqueFileName, $specialityID, $email, $password, $gender);
+ }
 
     if (mysqli_stmt_execute($stmt)) {
         $_SESSION['user_id'] = mysqli_insert_id($connection);
@@ -143,10 +148,10 @@ mysqli_close($connection);
         <input type="file" name="photo" required>
         <select name="SpecialityID" required>
             <option value="">Select Speciality</option>
-            <option value="Neurological_Specialist">Neurological Specialist</option>
-            <option value="Sports_Rehabilitation_Specialist">Sports Rehabilitation Specialist</option>
-            <option value="Pediatric_Physical_Therapist">Pediatric Physical Therapist</option>
-            <option value="Geriatric_Specialist">Geriatric Specialist</option>
+            <option value="1">Neurological Specialist</option>
+            <option value="2">Sports Rehabilitation Specialist</option>
+            <option value="3">Pediatric Physical Therapist</option>
+            <option value="4">Geriatric Specialist</option>
         </select>
         <input type="email" name="emailAddress" placeholder="Email Address" required>
         <input type="password" name="password" placeholder="Password" required>
