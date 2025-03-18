@@ -20,6 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
     $email = $_POST['emailAddress'];
+    $gender = $_POST['Gender'];
+    $ID = $_POST['ID'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     // التحقق مما إذا كان البريد الإلكتروني مستخدمًا بالفعل
@@ -36,13 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_close($stmt);
 
     if ($role === "patient") {
-        $gender = $_POST['Gender'];
         $dob = $_POST['DoB'];
 
-        $query = "INSERT INTO patient (firstName, lastName, Gender, DoB, emailAddress, password) 
-                  VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO patient (firstName, lastName, pid, Gender, DoB, emailAddress, password) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($connection, $query);
-        mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $gender, $dob, $email, $password);
+        mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $ID, $gender, $dob, $email, $password);
     } elseif ($role === "doctor") {
         $specialityID = $_POST['SpecialityID'];
         $uniqueFileName = uniqid() . "_" . basename($_FILES["photo"]["name"]);
@@ -50,10 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $targetFilePath = $targetDir . $uniqueFileName;
         move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath);
 
-        $query = "INSERT INTO doctor (firstName, lastName, photo, SpecialityID, emailAddress, password) 
+        $query = "INSERT INTO doctor (firstName, lastName, did, photo, SpecialityID, emailAddress, password, Gender) 
                   VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($connection, $query);
-        mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $uniqueFileName, $specialityID, $email, $password);
+        mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $ID, $uniqueFileName, $specialityID, $email, $password, $gender);
     }
 
     if (mysqli_stmt_execute($stmt)) {
@@ -126,6 +127,11 @@ mysqli_close($connection);
         <input type="text" name="firstName" placeholder="First Name" required>
         <input type="text" name="lastName" placeholder="Last Name" required>
         <input type="text" name="ID" placeholder="ID" required>
+        <select name="Gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
         <input type="file" name="photo" required>
         <select name="SpecialityID" required>
             <option value="">Select Speciality</option>
