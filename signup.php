@@ -11,9 +11,17 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-require 'database.php'; // Include the database connection
+$Shost = "localhost";
+$Sdatabase = "medora";
+$Suser = "root";
+$Spass = "root";
 
-session_start();
+// إنشاء اتصال بقاعدة البيانات
+$connection = mysqli_connect($Shost, $Suser, $Spass, $Sdatabase, 8889);
+
+if (!$connection) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST['role'];
@@ -43,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "INSERT INTO patient (firstName, lastName, pid, Gender, DoB, emailAddress, password) 
                   VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($connection, $query);
-        mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $ID, $gender, $dob, $email, $password);
+        mysqli_stmt_bind_param($stmt, "sssssss", $firstName, $lastName, $ID, $gender, $dob, $email, $password);
     } elseif ($role === "doctor") {
         $specialityID = $_POST['SpecialityID'];
         $uniqueFileName = uniqid() . "_" . basename($_FILES["photo"]["name"]);
@@ -52,9 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath);
 
         $query = "INSERT INTO doctor (firstName, lastName, did, photo, SpecialityID, emailAddress, password, Gender) 
-                  VALUES (?, ?, ?, ?, ?, ?)";
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($connection, $query);
-        mysqli_stmt_bind_param($stmt, "ssssss", $firstName, $lastName, $ID, $uniqueFileName, $specialityID, $email, $password, $gender);
+        mysqli_stmt_bind_param($stmt, "ssssssss", $firstName, $lastName, $ID, $uniqueFileName, $specialityID, $email, $password, $gender);
     }
 
     if (mysqli_stmt_execute($stmt)) {
@@ -193,7 +201,21 @@ mysqli_close($connection);
       </div>
   </footer>
 
-  <script src="medora.js"></script>
+  <script>
+  function showForm() {
+  const selectedRole = document.querySelector('input[name="role"]:checked').value;
+
+  document.getElementById('patientForm').classList.add('hidden');
+  document.getElementById('doctorForm').classList.add('hidden');
+
+  if (selectedRole === 'patient') {
+      document.getElementById('patientForm').classList.remove('hidden');
+  } else if (selectedRole === 'doctor') {
+      document.getElementById('doctorForm').classList.remove('hidden');
+  }
+}
+
+  </script>
 
 </body>
 </html>

@@ -7,7 +7,7 @@
     
     // إنشاء اتصال بقاعدة البيانات
     $connection = mysqli_connect($host, $user, $pass, $database,$port);
-    
+   
     if (!$connection) {
         die("Connection failed: " . mysqli_connect_error());
     }else
