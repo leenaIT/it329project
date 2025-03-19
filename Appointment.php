@@ -2,6 +2,15 @@
 session_start();
 include 'database.php';
 
+
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php"); // إعادة التوجيه إذا لم يكن المستخدم مسجلًا
+    exit();
+}
+
+
+
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     echo "Please log in first.";

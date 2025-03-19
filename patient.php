@@ -4,6 +4,14 @@ session_start();
 
 require 'database.php';
 
+
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php"); // إعادة التوجيه إذا لم يكن المستخدم مسجلًا
+    exit();
+}
+
+
 // Get the logged-in user's ID and type from session
 $userID = $_SESSION['user_id'];
 $userType = $_SESSION['user_type']; // 'doctor' or 'patient'

@@ -1,6 +1,15 @@
 <?php
 session_start();
 
+
+
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php"); // إعادة التوجيه إذا لم يكن المستخدم مسجلًا
+    exit();
+}
+
+
 // التأكد من تسجيل دخول الطبيب
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
     header("Location: login.php");
@@ -12,10 +21,10 @@ $doctor_id = $_SESSION['user_id'];
 // الاتصال بقاعدة البيانات
 $host = "localhost";
 $user = "root";
-$password = "";
+$password = "root";
 $database = "medora";
 
-$connection = new mysqli($host, $user, $password, $database);
+$connection = new mysqli($host, $user, $password, $database,8889);
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
@@ -199,6 +208,7 @@ table tbody tr:hover {
     .btn {
         padding: 10px 20px;
     }
+  
         
     </style>
 </head>

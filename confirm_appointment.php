@@ -1,6 +1,22 @@
 <?php
 session_start();
 
+
+
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php"); // إعادة التوجيه إذا لم يكن المستخدم مسجلًا
+    exit();
+}
+
+
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php"); // إعادة التوجيه إذا لم يكن المستخدم مسجلًا
+    exit();
+}
+
+
 // التأكد من أن المستخدم مسجل الدخول كطبيب
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
     header("Location: login.php");
