@@ -33,10 +33,10 @@ $appointment_id = intval($_GET['id']);
 // الاتصال بقاعدة البيانات
 $host = "localhost";
 $user = "root";
-$password = "";
+$password = "root";
 $database = "medora";
 
-$connection = new mysqli($host, $user, $password, $database);
+$connection = new mysqli($host, $user, $password, $database,8889);
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
