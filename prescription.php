@@ -2,7 +2,11 @@
 session_start();
 require 'database.php';
 
-// التأكد من أن المستخدم طبيب
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php"); 
+    exit();
+}
+
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
     header("Location: login.php");
     exit();
