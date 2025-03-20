@@ -3,11 +3,11 @@
   $host = "localhost";
     $database = "medora";
     $user = "root";
-    $pass = "root";
+    $pass = "";
     $port = "8889";
     
     // إنشاء اتصال بقاعدة البيانات
-    $connection = mysqli_connect($host, $user, $pass, $database,$port);
+    $connection = mysqli_connect($host, $user, $pass, $database);
    
     if (!$connection) {
         die("Connection failed: " . mysqli_connect_error());

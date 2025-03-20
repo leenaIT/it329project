@@ -499,7 +499,7 @@ padding: 20px;
 background: linear-gradient(145deg, #4da1a9, #9ad2d5);
 border-radius: 10px; 
 box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-color: #fff;
+color: #000000;
 text-align: left;
 animation: fadeIn 1s ease-in-out;
 display: flex;

@@ -1,15 +1,6 @@
 <?php
 session_start();
 
-
-
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.php"); // إعادة التوجيه إذا لم يكن المستخدم مسجلًا
-    exit();
-}
-
-
 // التأكد من تسجيل دخول الطبيب
 if (!isset($_SESSION['user_id']) || $_SESSION['user_type'] !== 'doctor') {
     header("Location: login.php");
@@ -21,22 +12,24 @@ $doctor_id = $_SESSION['user_id'];
 // الاتصال بقاعدة البيانات
 $host = "localhost";
 $user = "root";
-$password = "root";
+$password = "";
 $database = "medora";
 
-$connection = new mysqli($host, $user, $password, $database,8889);
+$connection = new mysqli($host, $user, $password, $database);
 if ($connection->connect_error) {
     die("Connection failed: " . $connection->connect_error);
 }
 
-// استرجاع بيانات الطبيب
-$doctorQuery = "SELECT firstName, lastName, emailAddress, speciality FROM doctor d
+
+// استرجاع بيانات الطبيب مع الصورة
+$doctorQuery = "SELECT firstName, lastName, emailAddress, speciality, uniqueFileName FROM doctor d
                 JOIN speciality s ON d.SpecialityID = s.id WHERE d.id = ?";
 $stmt = $connection->prepare($doctorQuery);
 $stmt->bind_param("i", $doctor_id);
 $stmt->execute();
 $doctor = $stmt->get_result()->fetch_assoc();
 $stmt->close();
+
 
 // استرجاع المواعيد القادمة
 $appointmentsQuery = "SELECT a.id, a.date, a.time, p.firstName, p.lastName, p.DoB, p.Gender, a.reason, a.status
@@ -208,7 +201,6 @@ table tbody tr:hover {
     .btn {
         padding: 10px 20px;
     }
-  
         
     </style>
 </head>
@@ -217,16 +209,18 @@ table tbody tr:hover {
         <div class="logo"><img src="logo.png" alt="Clinic Logo"></div>
         <nav>
             <a href="HomePage2.html">Home</a>
-            <a href="logout.php">Sign Out</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
     
     <div class="welcome">
         <h2>Welcome, Dr. <?php echo htmlspecialchars($doctor['firstName'] . ' ' . $doctor['lastName']); ?></h2>
+        <a href="HomePage2.html" id="sign-out">Sign Out</a>
     </div>
     
     <div class="profile-card">
-        <div class="profile-details">
+        <img class="profile-image" src="<?php echo !empty($doctor['uniqueFileName']) ? 'uploads/' . htmlspecialchars($doctor['uniqueFileName']) : 'default-doctor.jpg'; ?>" alt="Doctor Image">
+        <div class="profile-details">    
             <p><strong>Email:</strong> <?php echo htmlspecialchars($doctor['emailAddress']); ?></p>
             <p><strong>Speciality:</strong> <?php echo htmlspecialchars($doctor['speciality']); ?></p>
         </div>
